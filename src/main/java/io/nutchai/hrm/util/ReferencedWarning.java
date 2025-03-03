@@ -1,4 +1,4 @@
-package io.nutchai.hrm.util;
+package io.saugio50.hrm.util;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;

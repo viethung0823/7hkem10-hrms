@@ -1,7 +1,7 @@
-package io.nutchai.hrm.repos;
+package io.saugio50.hrm.repos;
 
-import io.nutchai.hrm.domain.ResUser;
-import io.nutchai.hrm.domain.ResUserRole;
+import io.saugio50.hrm.domain.ResUser;
+import io.saugio50.hrm.domain.ResUserRole;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 

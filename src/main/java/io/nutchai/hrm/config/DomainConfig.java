@@ -1,4 +1,4 @@
-package io.nutchai.hrm.config;
+package io.saugio50.hrm.config;
 
 import java.time.OffsetDateTime;
 import java.util.Optional;
@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 
 @Configuration
-@EntityScan("io.nutchai.hrm.domain")
-@EnableJpaRepositories("io.nutchai.hrm.repos")
+@EntityScan("io.saugio50.hrm.domain")
+@EnableJpaRepositories("io.saugio50.hrm.repos")
 @EnableTransactionManagement
 @EnableJpaAuditing(dateTimeProviderRef = "auditingDateTimeProvider")
 public class DomainConfig {

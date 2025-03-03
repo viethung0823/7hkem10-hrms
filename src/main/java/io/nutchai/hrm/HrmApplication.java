@@ -1,4 +1,4 @@
-package io.nutchai.hrm;
+package io.saugio50.hrm;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

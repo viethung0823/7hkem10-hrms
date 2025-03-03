@@ -1,4 +1,4 @@
-package io.nutchai.hrm.config;
+package io.saugio50.hrm.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

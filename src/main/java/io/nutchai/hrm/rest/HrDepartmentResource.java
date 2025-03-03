@@ -1,14 +1,14 @@
-package io.nutchai.hrm.rest;
+package io.saugio50.hrm.rest;
 
-import io.nutchai.hrm.domain.HrDepartment;
-import io.nutchai.hrm.domain.ResCompany;
-import io.nutchai.hrm.model.HrDepartmentDTO;
-import io.nutchai.hrm.repos.HrDepartmentRepository;
-import io.nutchai.hrm.repos.ResCompanyRepository;
-import io.nutchai.hrm.service.HrDepartmentService;
-import io.nutchai.hrm.util.CustomCollectors;
-import io.nutchai.hrm.util.ReferencedException;
-import io.nutchai.hrm.util.ReferencedWarning;
+import io.saugio50.hrm.domain.HrDepartment;
+import io.saugio50.hrm.domain.ResCompany;
+import io.saugio50.hrm.model.HrDepartmentDTO;
+import io.saugio50.hrm.repos.HrDepartmentRepository;
+import io.saugio50.hrm.repos.ResCompanyRepository;
+import io.saugio50.hrm.service.HrDepartmentService;
+import io.saugio50.hrm.util.CustomCollectors;
+import io.saugio50.hrm.util.ReferencedException;
+import io.saugio50.hrm.util.ReferencedWarning;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import java.util.List;

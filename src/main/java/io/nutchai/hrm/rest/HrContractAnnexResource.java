@@ -1,10 +1,10 @@
-package io.nutchai.hrm.rest;
+package io.saugio50.hrm.rest;
 
-import io.nutchai.hrm.domain.HrContract;
-import io.nutchai.hrm.model.HrContractAnnexDTO;
-import io.nutchai.hrm.repos.HrContractRepository;
-import io.nutchai.hrm.service.HrContractAnnexService;
-import io.nutchai.hrm.util.CustomCollectors;
+import io.saugio50.hrm.domain.HrContract;
+import io.saugio50.hrm.model.HrContractAnnexDTO;
+import io.saugio50.hrm.repos.HrContractRepository;
+import io.saugio50.hrm.service.HrContractAnnexService;
+import io.saugio50.hrm.util.CustomCollectors;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import java.util.List;

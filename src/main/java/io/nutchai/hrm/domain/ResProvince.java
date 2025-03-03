@@ -1,4 +1,4 @@
-package io.nutchai.hrm.domain;
+package io.saugio50.hrm.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

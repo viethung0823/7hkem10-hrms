@@ -1,4 +1,4 @@
-package io.nutchai.hrm.config;
+package io.saugio50.hrm.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

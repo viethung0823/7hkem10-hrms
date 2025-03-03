@@ -1,7 +1,7 @@
-package io.nutchai.hrm.rest;
+package io.saugio50.hrm.rest;
 
-import io.nutchai.hrm.model.ResUserRoleDTO;
-import io.nutchai.hrm.service.ResUserRoleService;
+import io.saugio50.hrm.model.ResUserRoleDTO;
+import io.saugio50.hrm.service.ResUserRoleService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import java.util.List;

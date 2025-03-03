@@ -1,4 +1,4 @@
-package io.nutchai.hrm.model;
+package io.saugio50.hrm.model;
 
 
 public enum Gender {

@@ -1,12 +1,12 @@
-package io.nutchai.hrm.rest;
+package io.saugio50.hrm.rest;
 
-import io.nutchai.hrm.domain.ResDistrict;
-import io.nutchai.hrm.model.ResDistrictWardDTO;
-import io.nutchai.hrm.repos.ResDistrictRepository;
-import io.nutchai.hrm.service.ResDistrictWardService;
-import io.nutchai.hrm.util.CustomCollectors;
-import io.nutchai.hrm.util.ReferencedException;
-import io.nutchai.hrm.util.ReferencedWarning;
+import io.saugio50.hrm.domain.ResDistrict;
+import io.saugio50.hrm.model.ResDistrictWardDTO;
+import io.saugio50.hrm.repos.ResDistrictRepository;
+import io.saugio50.hrm.service.ResDistrictWardService;
+import io.saugio50.hrm.util.CustomCollectors;
+import io.saugio50.hrm.util.ReferencedException;
+import io.saugio50.hrm.util.ReferencedWarning;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import java.util.List;

@@ -1,9 +1,9 @@
-package io.nutchai.hrm.rest;
+package io.saugio50.hrm.rest;
 
-import io.nutchai.hrm.model.HrContractTypeDTO;
-import io.nutchai.hrm.service.HrContractTypeService;
-import io.nutchai.hrm.util.ReferencedException;
-import io.nutchai.hrm.util.ReferencedWarning;
+import io.saugio50.hrm.model.HrContractTypeDTO;
+import io.saugio50.hrm.service.HrContractTypeService;
+import io.saugio50.hrm.util.ReferencedException;
+import io.saugio50.hrm.util.ReferencedWarning;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import java.util.List;

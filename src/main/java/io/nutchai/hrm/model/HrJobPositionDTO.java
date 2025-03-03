@@ -1,4 +1,4 @@
-package io.nutchai.hrm.model;
+package io.saugio50.hrm.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;

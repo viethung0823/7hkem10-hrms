@@ -1,13 +1,13 @@
-package io.nutchai.hrm.repos;
+package io.saugio50.hrm.repos;
 
-import io.nutchai.hrm.domain.HrDepartment;
-import io.nutchai.hrm.domain.HrEmployee;
-import io.nutchai.hrm.domain.HrJobPosition;
-import io.nutchai.hrm.domain.HrJobTitle;
-import io.nutchai.hrm.domain.ResCompany;
-import io.nutchai.hrm.domain.ResDistrictWard;
-import io.nutchai.hrm.domain.ResProvince;
-import io.nutchai.hrm.domain.ResUser;
+import io.saugio50.hrm.domain.HrDepartment;
+import io.saugio50.hrm.domain.HrEmployee;
+import io.saugio50.hrm.domain.HrJobPosition;
+import io.saugio50.hrm.domain.HrJobTitle;
+import io.saugio50.hrm.domain.ResCompany;
+import io.saugio50.hrm.domain.ResDistrictWard;
+import io.saugio50.hrm.domain.ResProvince;
+import io.saugio50.hrm.domain.ResUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

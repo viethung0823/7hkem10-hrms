@@ -1,14 +1,14 @@
-package io.nutchai.hrm.service;
+package io.saugio50.hrm.service;
 
-import io.nutchai.hrm.domain.HrContract;
-import io.nutchai.hrm.domain.HrEmployee;
-import io.nutchai.hrm.domain.HrJobTitle;
-import io.nutchai.hrm.model.HrJobTitleDTO;
-import io.nutchai.hrm.repos.HrContractRepository;
-import io.nutchai.hrm.repos.HrEmployeeRepository;
-import io.nutchai.hrm.repos.HrJobTitleRepository;
-import io.nutchai.hrm.util.NotFoundException;
-import io.nutchai.hrm.util.ReferencedWarning;
+import io.saugio50.hrm.domain.HrContract;
+import io.saugio50.hrm.domain.HrEmployee;
+import io.saugio50.hrm.domain.HrJobTitle;
+import io.saugio50.hrm.model.HrJobTitleDTO;
+import io.saugio50.hrm.repos.HrContractRepository;
+import io.saugio50.hrm.repos.HrEmployeeRepository;
+import io.saugio50.hrm.repos.HrJobTitleRepository;
+import io.saugio50.hrm.util.NotFoundException;
+import io.saugio50.hrm.util.ReferencedWarning;
 import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;

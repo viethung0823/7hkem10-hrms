@@ -1,10 +1,10 @@
-package io.nutchai.hrm.model;
+package io.saugio50.hrm.model;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 
-import io.nutchai.hrm.service.HrDepartmentService;
+import io.saugio50.hrm.service.HrDepartmentService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Constraint;
 import jakarta.validation.ConstraintValidator;

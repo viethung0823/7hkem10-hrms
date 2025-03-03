@@ -1,10 +1,10 @@
-package io.nutchai.hrm.service;
+package io.saugio50.hrm.service;
 
-import io.nutchai.hrm.domain.ResUserRole;
-import io.nutchai.hrm.model.ResUserRoleDTO;
-import io.nutchai.hrm.repos.ResUserRepository;
-import io.nutchai.hrm.repos.ResUserRoleRepository;
-import io.nutchai.hrm.util.NotFoundException;
+import io.saugio50.hrm.domain.ResUserRole;
+import io.saugio50.hrm.model.ResUserRoleDTO;
+import io.saugio50.hrm.repos.ResUserRepository;
+import io.saugio50.hrm.repos.ResUserRoleRepository;
+import io.saugio50.hrm.util.NotFoundException;
 import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.data.domain.Sort;

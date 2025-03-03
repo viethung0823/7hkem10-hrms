@@ -8,7 +8,7 @@
         <version>3.4.3</version>
         <relativePath /><!-- lookup parent from repository -->
     </parent>
-    <groupId>io.nutchai</groupId>
+    <groupId>io.saugio50</groupId>
     <artifactId>hrm</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>hrm</name>

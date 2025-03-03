@@ -1,7 +1,7 @@
-package io.nutchai.hrm.repos;
+package io.saugio50.hrm.repos;
 
-import io.nutchai.hrm.domain.HrDepartment;
-import io.nutchai.hrm.domain.ResCompany;
+import io.saugio50.hrm.domain.HrDepartment;
+import io.saugio50.hrm.domain.ResCompany;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

@@ -1,4 +1,4 @@
-package io.nutchai.hrm.util;
+package io.saugio50.hrm.util;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
