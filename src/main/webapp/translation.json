@@ -1,0 +1,842 @@
+{
+  "app": {
+    "title": "Hrm"
+  },
+  "navigation": {
+    "toggle": "Toggle navigation",
+    "home": "Home",
+    "entities": "Entities"
+  },
+  "home": {
+    "index": {
+      "headline": "Welcome to your new app!",
+      "text": "HRMS system.",
+      "swagger": {
+        "text": "Swagger is",
+        "link": "available here"
+      },
+      "exploreEntities": "Explore your entities"
+    }
+  },
+  "error": {
+    "headline": "Error",
+    "message": "The page you are looking for is not available right now."
+  },
+  "hrDepartment": {
+    "list": {
+      "headline": "Hr Departments",
+      "createNew": "Create new Hr Department",
+      "empty": "No Hr Departments could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Hr Department",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "code": {
+      "label": "Code"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "parent": {
+      "label": "Parent"
+    },
+    "company": {
+      "label": "Company"
+    },
+    "edit": {
+      "headline": "Edit Hr Department",
+      "back": "Back to list"
+    },
+    "hrDepartment": {
+      "parent": {
+        "referenced": "This entity is still referenced by Hr Department {{id}} via field Parent."
+      }
+    },
+    "hrJobPosition": {
+      "department": {
+        "referenced": "This entity is still referenced by Hr Job Position {{id}} via field Department."
+      }
+    },
+    "hrEmployee": {
+      "department": {
+        "referenced": "This entity is still referenced by Hr Employee {{id}} via field Department."
+      }
+    },
+    "hrContract": {
+      "department": {
+        "referenced": "This entity is still referenced by Hr Contract {{id}} via field Department."
+      }
+    },
+    "create": {
+      "success": "Hr Department was created successfully."
+    },
+    "update": {
+      "success": "Hr Department was updated successfully."
+    },
+    "delete": {
+      "success": "Hr Department was removed successfully."
+    }
+  },
+  "resCompany": {
+    "list": {
+      "headline": "Res Companies",
+      "createNew": "Create new Res Company",
+      "empty": "No Res Companies could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Res Company",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "address": {
+      "label": "Address"
+    },
+    "phone": {
+      "label": "Phone"
+    },
+    "email": {
+      "label": "Email"
+    },
+    "website": {
+      "label": "Website"
+    },
+    "taxCode": {
+      "label": "Tax Code"
+    },
+    "edit": {
+      "headline": "Edit Res Company",
+      "back": "Back to list"
+    },
+    "hrDepartment": {
+      "company": {
+        "referenced": "This entity is still referenced by Hr Department {{id}} via field Company."
+      }
+    },
+    "hrJobPosition": {
+      "company": {
+        "referenced": "This entity is still referenced by Hr Job Position {{id}} via field Company."
+      }
+    },
+    "hrEmployee": {
+      "company": {
+        "referenced": "This entity is still referenced by Hr Employee {{id}} via field Company."
+      }
+    },
+    "hrContract": {
+      "company": {
+        "referenced": "This entity is still referenced by Hr Contract {{id}} via field Company."
+      }
+    },
+    "create": {
+      "success": "Res Company was created successfully."
+    },
+    "update": {
+      "success": "Res Company was updated successfully."
+    },
+    "delete": {
+      "success": "Res Company was removed successfully."
+    }
+  },
+  "hrJobPosition": {
+    "list": {
+      "headline": "Hr Job Positions",
+      "createNew": "Create new Hr Job Position",
+      "empty": "No Hr Job Positions could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Hr Job Position",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "isRecruiting": {
+      "label": "Is Recruiting"
+    },
+    "targetRecruitment": {
+      "label": "Target Recruitment"
+    },
+    "jobSummary": {
+      "label": "Job Summary"
+    },
+    "company": {
+      "label": "Company"
+    },
+    "department": {
+      "label": "Department"
+    },
+    "location": {
+      "label": "Location"
+    },
+    "edit": {
+      "headline": "Edit Hr Job Position",
+      "back": "Back to list"
+    },
+    "hrEmployee": {
+      "jobPosition": {
+        "referenced": "This entity is still referenced by Hr Employee {{id}} via field Job Position."
+      }
+    },
+    "hrContract": {
+      "jobPosition": {
+        "referenced": "This entity is still referenced by Hr Contract {{id}} via field Job Position."
+      }
+    },
+    "create": {
+      "success": "Hr Job Position was created successfully."
+    },
+    "update": {
+      "success": "Hr Job Position was updated successfully."
+    },
+    "delete": {
+      "success": "Hr Job Position was removed successfully."
+    }
+  },
+  "resLocation": {
+    "list": {
+      "headline": "Res Locations",
+      "createNew": "Create new Res Location",
+      "empty": "No Res Locations could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Res Location",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "latitude": {
+      "label": "Latitude"
+    },
+    "longitude": {
+      "label": "Longitude"
+    },
+    "street": {
+      "label": "Street"
+    },
+    "districWard": {
+      "label": "Distric Ward"
+    },
+    "province": {
+      "label": "Province"
+    },
+    "district": {
+      "label": "District"
+    },
+    "edit": {
+      "headline": "Edit Res Location",
+      "back": "Back to list"
+    },
+    "hrJobPosition": {
+      "location": {
+        "referenced": "This entity is still referenced by Hr Job Position {{id}} via field Location."
+      }
+    },
+    "create": {
+      "success": "Res Location was created successfully."
+    },
+    "update": {
+      "success": "Res Location was updated successfully."
+    },
+    "delete": {
+      "success": "Res Location was removed successfully."
+    }
+  },
+  "resProvince": {
+    "list": {
+      "headline": "Res Provinces",
+      "createNew": "Create new Res Province",
+      "empty": "No Res Provinces could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Res Province",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "code": {
+      "label": "Code"
+    },
+    "edit": {
+      "headline": "Edit Res Province",
+      "back": "Back to list"
+    },
+    "resDistrict": {
+      "province": {
+        "referenced": "This entity is still referenced by Res District {{id}} via field Province."
+      }
+    },
+    "resLocation": {
+      "province": {
+        "referenced": "This entity is still referenced by Res Location {{id}} via field Province."
+      }
+    },
+    "hrEmployee": {
+      "province": {
+        "referenced": "This entity is still referenced by Hr Employee {{id}} via field Province."
+      }
+    },
+    "create": {
+      "success": "Res Province was created successfully."
+    },
+    "update": {
+      "success": "Res Province was updated successfully."
+    },
+    "delete": {
+      "success": "Res Province was removed successfully."
+    }
+  },
+  "resDistrictWard": {
+    "list": {
+      "headline": "Res District Wards",
+      "createNew": "Create new Res District Ward",
+      "empty": "No Res District Wards could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Res District Ward",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "code": {
+      "label": "Code"
+    },
+    "district": {
+      "label": "District"
+    },
+    "edit": {
+      "headline": "Edit Res District Ward",
+      "back": "Back to list"
+    },
+    "resLocation": {
+      "districWard": {
+        "referenced": "This entity is still referenced by Res Location {{id}} via field Distric Ward."
+      }
+    },
+    "hrEmployee": {
+      "ward": {
+        "referenced": "This entity is still referenced by Hr Employee {{id}} via field Ward."
+      }
+    },
+    "create": {
+      "success": "Res District Ward was created successfully."
+    },
+    "update": {
+      "success": "Res District Ward was updated successfully."
+    },
+    "delete": {
+      "success": "Res District Ward was removed successfully."
+    }
+  },
+  "hrJobTitle": {
+    "list": {
+      "headline": "Hr Job Titles",
+      "createNew": "Create new Hr Job Title",
+      "empty": "No Hr Job Titles could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Hr Job Title",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "code": {
+      "label": "Code"
+    },
+    "description": {
+      "label": "Description"
+    },
+    "edit": {
+      "headline": "Edit Hr Job Title",
+      "back": "Back to list"
+    },
+    "hrEmployee": {
+      "jobTitle": {
+        "referenced": "This entity is still referenced by Hr Employee {{id}} via field Job Title."
+      }
+    },
+    "hrContract": {
+      "jobTitle": {
+        "referenced": "This entity is still referenced by Hr Contract {{id}} via field Job Title."
+      }
+    },
+    "create": {
+      "success": "Hr Job Title was created successfully."
+    },
+    "update": {
+      "success": "Hr Job Title was updated successfully."
+    },
+    "delete": {
+      "success": "Hr Job Title was removed successfully."
+    }
+  },
+  "resUser": {
+    "list": {
+      "headline": "Res Users",
+      "createNew": "Create new Res User",
+      "empty": "No Res Users could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Res User",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "username": {
+      "label": "Username"
+    },
+    "password": {
+      "label": "Password"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "role": {
+      "label": "Role"
+    },
+    "edit": {
+      "headline": "Edit Res User",
+      "back": "Back to list"
+    },
+    "hrEmployee": {
+      "user": {
+        "referenced": "This entity is still referenced by Hr Employee {{id}} via field User."
+      }
+    },
+    "create": {
+      "success": "Res User was created successfully."
+    },
+    "update": {
+      "success": "Res User was updated successfully."
+    },
+    "delete": {
+      "success": "Res User was removed successfully."
+    }
+  },
+  "hrEmployee": {
+    "list": {
+      "headline": "Hr Employees",
+      "createNew": "Create new Hr Employee",
+      "empty": "No Hr Employees could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Hr Employee",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "code": {
+      "label": "Code"
+    },
+    "email": {
+      "label": "Email"
+    },
+    "workPhone": {
+      "label": "Work Phone"
+    },
+    "gender": {
+      "label": "Gender"
+    },
+    "status": {
+      "label": "Status"
+    },
+    "dateJoin": {
+      "label": "Date Join"
+    },
+    "dateLeft": {
+      "label": "Date Left"
+    },
+    "country": {
+      "label": "Country"
+    },
+    "idNumber": {
+      "label": "Id Number"
+    },
+    "idDate": {
+      "label": "Id Date"
+    },
+    "idAddress": {
+      "label": "Id Address"
+    },
+    "birthday": {
+      "label": "Birthday"
+    },
+    "placeOfBirth": {
+      "label": "Place Of Birth"
+    },
+    "permanentAddress": {
+      "label": "Permanent Address"
+    },
+    "currentAddress": {
+      "label": "Current Address"
+    },
+    "passport": {
+      "label": "Passport"
+    },
+    "maritalStatus": {
+      "label": "Marital Status"
+    },
+    "emergencyContact": {
+      "label": "Emergency Contact"
+    },
+    "emergencyPhone": {
+      "label": "Emergency Phone"
+    },
+    "socialInsuranceCode": {
+      "label": "Social Insurance Code"
+    },
+    "taxCode": {
+      "label": "Tax Code"
+    },
+    "religion": {
+      "label": "Religion"
+    },
+    "isUnion": {
+      "label": "Is Union"
+    },
+    "company": {
+      "label": "Company"
+    },
+    "department": {
+      "label": "Department"
+    },
+    "jobPosition": {
+      "label": "Job Position"
+    },
+    "jobTitle": {
+      "label": "Job Title"
+    },
+    "province": {
+      "label": "Province"
+    },
+    "district": {
+      "label": "District"
+    },
+    "ward": {
+      "label": "Ward"
+    },
+    "user": {
+      "label": "User"
+    },
+    "manager": {
+      "label": "Manager"
+    },
+    "edit": {
+      "headline": "Edit Hr Employee",
+      "back": "Back to list"
+    },
+    "hrEmployee": {
+      "manager": {
+        "referenced": "This entity is still referenced by Hr Employee {{id}} via field Manager."
+      }
+    },
+    "hrContract": {
+      "employee": {
+        "referenced": "This entity is still referenced by Hr Contract {{id}} via field Employee."
+      }
+    },
+    "create": {
+      "success": "Hr Employee was created successfully."
+    },
+    "update": {
+      "success": "Hr Employee was updated successfully."
+    },
+    "delete": {
+      "success": "Hr Employee was removed successfully."
+    }
+  },
+  "hrContractType": {
+    "list": {
+      "headline": "Hr Contract Types",
+      "createNew": "Create new Hr Contract Type",
+      "empty": "No Hr Contract Types could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Hr Contract Type",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "code": {
+      "label": "Code"
+    },
+    "isUnlimited": {
+      "label": "Is Unlimited"
+    },
+    "isProbationaryContract": {
+      "label": "Is Probationary Contract"
+    },
+    "edit": {
+      "headline": "Edit Hr Contract Type",
+      "back": "Back to list"
+    },
+    "hrContract": {
+      "contractType": {
+        "referenced": "This entity is still referenced by Hr Contract {{id}} via field Contract Type."
+      }
+    },
+    "create": {
+      "success": "Hr Contract Type was created successfully."
+    },
+    "update": {
+      "success": "Hr Contract Type was updated successfully."
+    },
+    "delete": {
+      "success": "Hr Contract Type was removed successfully."
+    }
+  },
+  "hrContract": {
+    "list": {
+      "headline": "Hr Contracts",
+      "createNew": "Create new Hr Contract",
+      "empty": "No Hr Contracts could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Hr Contract",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "code": {
+      "label": "Code"
+    },
+    "dateFrom": {
+      "label": "Date From"
+    },
+    "dateTo": {
+      "label": "Date To"
+    },
+    "salary": {
+      "label": "Salary"
+    },
+    "status": {
+      "label": "Status"
+    },
+    "employee": {
+      "label": "Employee"
+    },
+    "contractType": {
+      "label": "Contract Type"
+    },
+    "jobPosition": {
+      "label": "Job Position"
+    },
+    "jobTitle": {
+      "label": "Job Title"
+    },
+    "department": {
+      "label": "Department"
+    },
+    "company": {
+      "label": "Company"
+    },
+    "edit": {
+      "headline": "Edit Hr Contract",
+      "back": "Back to list"
+    },
+    "hrContractAnnex": {
+      "contract": {
+        "referenced": "This entity is still referenced by Hr Contract Annex {{id}} via field Contract."
+      }
+    },
+    "create": {
+      "success": "Hr Contract was created successfully."
+    },
+    "update": {
+      "success": "Hr Contract was updated successfully."
+    },
+    "delete": {
+      "success": "Hr Contract was removed successfully."
+    }
+  },
+  "hrContractAnnex": {
+    "list": {
+      "headline": "Hr Contract Annexes",
+      "createNew": "Create new Hr Contract Annex",
+      "empty": "No Hr Contract Annexes could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Hr Contract Annex",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "number": {
+      "label": "Number"
+    },
+    "content": {
+      "label": "Content"
+    },
+    "dateEfective": {
+      "label": "Date Efective"
+    },
+    "contract": {
+      "label": "Contract"
+    },
+    "edit": {
+      "headline": "Edit Hr Contract Annex",
+      "back": "Back to list"
+    },
+    "create": {
+      "success": "Hr Contract Annex was created successfully."
+    },
+    "update": {
+      "success": "Hr Contract Annex was updated successfully."
+    },
+    "delete": {
+      "success": "Hr Contract Annex was removed successfully."
+    }
+  },
+  "resUserRole": {
+    "list": {
+      "headline": "Res User Roles",
+      "createNew": "Create new Res User Role",
+      "empty": "No Res User Roles could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Res User Role",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "edit": {
+      "headline": "Edit Res User Role",
+      "back": "Back to list"
+    },
+    "resUser": {
+      "role": {
+        "referenced": "This entity is still referenced by Res User {{id}} via field Role."
+      }
+    },
+    "create": {
+      "success": "Res User Role was created successfully."
+    },
+    "update": {
+      "success": "Res User Role was updated successfully."
+    },
+    "delete": {
+      "success": "Res User Role was removed successfully."
+    }
+  },
+  "exists": {
+    "hrDepartment": {
+      "code": "This Code is already taken."
+    },
+    "resProvince": {
+      "code": "This Code is already taken."
+    },
+    "resDistrictWard": {
+      "code": "This Code is already taken."
+    },
+    "hrJobTitle": {
+      "code": "This Code is already taken."
+    },
+    "resUser": {
+      "username": "This Username is already taken."
+    }
+  },
+  "Exists": {
+    "resLocation": {
+      "distric-ward": "This Res District Ward is already referenced by another Res Location."
+    },
+    "hrEmployee": {
+      "user": "This Res User is already referenced by another Hr Employee."
+    }
+  },
+  "NotNull": {
+    "hrEmployee": {
+      "gender": "Please select a Gender."
+    }
+  },
+  "select": {
+    "empty": {
+      "label": "Please select"
+    }
+  },
+  "delete": {
+    "confirm": "Do you really want to delete this element? This cannot be undone."
+  },
+  "operation": {
+    "success": "Your operation was successful."
+  },
+  "required": "Please provide a value.",
+  "maxlength": "Your value must have a length of less then ${max} characters.",
+  "valid": {
+    "number": "Please provide a valid number.",
+    "json": "Please provide a valid JSON."
+  }
+}
