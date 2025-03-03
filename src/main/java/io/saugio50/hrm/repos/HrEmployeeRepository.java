@@ -5,6 +5,7 @@ import io.saugio50.hrm.domain.HrEmployee;
 import io.saugio50.hrm.domain.HrJobPosition;
 import io.saugio50.hrm.domain.HrJobTitle;
 import io.saugio50.hrm.domain.ResCompany;
+import io.saugio50.hrm.domain.ResDistrict;
 import io.saugio50.hrm.domain.ResDistrictWard;
 import io.saugio50.hrm.domain.ResProvince;
 import io.saugio50.hrm.domain.ResUser;
@@ -22,6 +23,8 @@ public interface HrEmployeeRepository extends JpaRepository<HrEmployee, Long> {
     HrEmployee findFirstByJobTitle(HrJobTitle hrJobTitle);
 
     HrEmployee findFirstByProvince(ResProvince resProvince);
+
+    HrEmployee findFirstByDistrict(ResDistrict resDistrict);
 
     HrEmployee findFirstByWard(ResDistrictWard resDistrictWard);
 

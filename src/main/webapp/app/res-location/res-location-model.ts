@@ -11,6 +11,6 @@ export class ResLocationDTO {
   street?: string|null;
   districWard?: number|null;
   province?: number|null;
-  district?: string|null;
+  district?: number|null;
 
 }

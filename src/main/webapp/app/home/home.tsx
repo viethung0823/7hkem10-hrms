@@ -33,6 +33,7 @@ export default function Home() {
         <Link to="/hrContracts" className="list-group-item list-group-item-action">{t('hrContract.list.headline')}</Link>
         <Link to="/hrContractAnnexes" className="list-group-item list-group-item-action">{t('hrContractAnnex.list.headline')}</Link>
         <Link to="/resUserRoles" className="list-group-item list-group-item-action">{t('resUserRole.list.headline')}</Link>
+        <Link to="/resDistricts" className="list-group-item list-group-item-action">{t('resDistrict.list.headline')}</Link>
       </div>
     </div>
   </>);

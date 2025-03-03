@@ -10,7 +10,7 @@
   "home": {
     "index": {
       "headline": "Welcome to your new app!",
-      "text": "HRMS system.",
+      "text": "Your app was created with <a href=\"https://bootify.io\" target=\"_blank\">Bootify.io</a> and can now be customized. If you are happy with the result, <strong>please recommend us to other developers</strong> - so Bootify.io can grow further.",
       "swagger": {
         "text": "Swagger is",
         "link": "available here"
@@ -792,6 +792,59 @@
       "success": "Res User Role was removed successfully."
     }
   },
+  "resDistrict": {
+    "list": {
+      "headline": "Res Districts",
+      "createNew": "Create new Res District",
+      "empty": "No Res Districts could be found.",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "add": {
+      "headline": "Add Res District",
+      "back": "Back to list"
+    },
+    "id": {
+      "label": "Id"
+    },
+    "name": {
+      "label": "Name"
+    },
+    "code": {
+      "label": "Code"
+    },
+    "province": {
+      "label": "Province"
+    },
+    "edit": {
+      "headline": "Edit Res District",
+      "back": "Back to list"
+    },
+    "resDistrictWard": {
+      "district": {
+        "referenced": "This entity is still referenced by Res District Ward {{id}} via field District."
+      }
+    },
+    "resLocation": {
+      "district": {
+        "referenced": "This entity is still referenced by Res Location {{id}} via field District."
+      }
+    },
+    "hrEmployee": {
+      "district": {
+        "referenced": "This entity is still referenced by Hr Employee {{id}} via field District."
+      }
+    },
+    "create": {
+      "success": "Res District was created successfully."
+    },
+    "update": {
+      "success": "Res District was updated successfully."
+    },
+    "delete": {
+      "success": "Res District was removed successfully."
+    }
+  },
   "exists": {
     "hrDepartment": {
       "code": "This Code is already taken."
@@ -807,6 +860,9 @@
     },
     "resUser": {
       "username": "This Username is already taken."
+    },
+    "resDistrict": {
+      "code": "This Code is already taken."
     }
   },
   "Exists": {

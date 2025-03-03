@@ -2,7 +2,6 @@ package io.saugio50.hrm.model;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +22,6 @@ public class ResDistrictWardDTO {
     private String code;
 
     @NotNull
-    private UUID district;
+    private Long district;
 
 }

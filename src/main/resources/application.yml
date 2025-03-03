@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/hrm-v1}
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/hrm}
     username: ${JDBC_DATABASE_USERNAME:postgres}
     password: ${JDBC_DATABASE_PASSWORD:<<YOUR_PASSWORD>>}
     hikari:
@@ -35,5 +35,6 @@ error:
       ResUserUsernameUnique: RES_USER_USERNAME_UNIQUE
       HrEmployeeUserUnique: HR_EMPLOYEE_USER_UNIQUE
       ResProvinceCodeUnique: RES_PROVINCE_CODE_UNIQUE
+      ResDistrictCodeUnique: RES_DISTRICT_CODE_UNIQUE
 springdoc:
   pathsToMatch: /api/**

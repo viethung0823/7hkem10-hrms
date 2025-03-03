@@ -40,7 +40,7 @@ export class HrEmployeeDTO {
   jobPosition?: number|null;
   jobTitle?: number|null;
   province?: number|null;
-  district?: string|null;
+  district?: number|null;
   ward?: number|null;
   user?: number|null;
   manager?: number|null;

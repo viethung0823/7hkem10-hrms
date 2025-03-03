@@ -27,7 +27,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -151,7 +150,7 @@ public class HrEmployeeResource {
     }
 
     @GetMapping("/districtValues")
-    public ResponseEntity<Map<UUID, String>> getDistrictValues() {
+    public ResponseEntity<Map<Long, String>> getDistrictValues() {
         return ResponseEntity.ok(resDistrictRepository.findAll(Sort.by("id"))
                 .stream()
                 .collect(CustomCollectors.toSortedMap(ResDistrict::getId, ResDistrict::getName)));

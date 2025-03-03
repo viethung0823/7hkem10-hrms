@@ -1,7 +1,6 @@
 package io.saugio50.hrm.model;
 
 import jakarta.validation.constraints.Size;
-import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,6 +26,6 @@ public class ResLocationDTO {
 
     private Long province;
 
-    private UUID district;
+    private Long district;
 
 }

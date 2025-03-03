@@ -16,7 +16,7 @@ function getSchema() {
   return yup.object({
     name: yup.string().emptyToNull().max(255).required(),
     code: yup.string().emptyToNull().max(255).required(),
-    district: yup.string().emptyToNull().uuid().required()
+    district: yup.number().integer().emptyToNull().required()
   });
 }
 
@@ -25,7 +25,7 @@ export default function ResDistrictWardEdit() {
   useDocumentTitle(t('resDistrictWard.edit.headline'));
 
   const navigate = useNavigate();
-  const [districtValues, setDistrictValues] = useState<Record<string,string>>({});
+  const [districtValues, setDistrictValues] = useState<Map<number,string>>(new Map());
   const params = useParams();
   const currentId = +params.id!;
 

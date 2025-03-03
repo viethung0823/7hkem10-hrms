@@ -40,6 +40,7 @@ export default function Header() {
                   <li><Link to="/hrContracts" className="dropdown-item">{t('hrContract.list.headline')}</Link></li>
                   <li><Link to="/hrContractAnnexes" className="dropdown-item">{t('hrContractAnnex.list.headline')}</Link></li>
                   <li><Link to="/resUserRoles" className="dropdown-item">{t('resUserRole.list.headline')}</Link></li>
+                  <li><Link to="/resDistricts" className="dropdown-item">{t('resDistrict.list.headline')}</Link></li>
                 </ul>
               </li>
             </ul>

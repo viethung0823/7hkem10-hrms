@@ -41,6 +41,9 @@ import HrContractAnnexEdit from './hr-contract-annex/hr-contract-annex-edit';
 import ResUserRoleList from './res-user-role/res-user-role-list';
 import ResUserRoleAdd from './res-user-role/res-user-role-add';
 import ResUserRoleEdit from './res-user-role/res-user-role-edit';
+import ResDistrictList from './res-district/res-district-list';
+import ResDistrictAdd from './res-district/res-district-add';
+import ResDistrictEdit from './res-district/res-district-edit';
 import Error from './error/error';
 
 
@@ -89,6 +92,9 @@ export default function AppRoutes() {
         { path: 'resUserRoles', element: <ResUserRoleList /> },
         { path: 'resUserRoles/add', element: <ResUserRoleAdd /> },
         { path: 'resUserRoles/edit/:id', element: <ResUserRoleEdit /> },
+        { path: 'resDistricts', element: <ResDistrictList /> },
+        { path: 'resDistricts/add', element: <ResDistrictAdd /> },
+        { path: 'resDistricts/edit/:id', element: <ResDistrictEdit /> },
         { path: 'error', element: <Error /> },
         { path: '*', element: <Error /> }
       ]

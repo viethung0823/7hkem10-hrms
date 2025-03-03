@@ -20,7 +20,7 @@ function getSchema() {
     street: yup.string().emptyToNull().max(255),
     districWard: yup.number().integer().emptyToNull(),
     province: yup.number().integer().emptyToNull(),
-    district: yup.string().emptyToNull().uuid()
+    district: yup.number().integer().emptyToNull()
   });
 }
 
@@ -31,7 +31,7 @@ export default function ResLocationAdd() {
   const navigate = useNavigate();
   const [districWardValues, setDistricWardValues] = useState<Map<number,string>>(new Map());
   const [provinceValues, setProvinceValues] = useState<Map<number,string>>(new Map());
-  const [districtValues, setDistrictValues] = useState<Record<string,string>>({});
+  const [districtValues, setDistrictValues] = useState<Map<number,string>>(new Map());
 
   const useFormResult = useForm({
     resolver: yupResolver(getSchema()),

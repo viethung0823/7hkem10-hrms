@@ -7,6 +7,6 @@ export class ResDistrictWardDTO {
   id?: number|null;
   name?: string|null;
   code?: string|null;
-  district?: string|null;
+  district?: number|null;
 
 }

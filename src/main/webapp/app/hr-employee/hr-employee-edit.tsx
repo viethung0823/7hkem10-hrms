@@ -43,7 +43,7 @@ function getSchema() {
     jobPosition: yup.number().integer().emptyToNull().required(),
     jobTitle: yup.number().integer().emptyToNull().required(),
     province: yup.number().integer().emptyToNull().required(),
-    district: yup.string().emptyToNull().uuid().required(),
+    district: yup.number().integer().emptyToNull().required(),
     ward: yup.number().integer().emptyToNull().required(),
     user: yup.number().integer().emptyToNull().required(),
     manager: yup.number().integer().emptyToNull()
@@ -60,7 +60,7 @@ export default function HrEmployeeEdit() {
   const [jobPositionValues, setJobPositionValues] = useState<Map<number,string>>(new Map());
   const [jobTitleValues, setJobTitleValues] = useState<Map<number,string>>(new Map());
   const [provinceValues, setProvinceValues] = useState<Map<number,string>>(new Map());
-  const [districtValues, setDistrictValues] = useState<Record<string,string>>({});
+  const [districtValues, setDistrictValues] = useState<Map<number,string>>(new Map());
   const [wardValues, setWardValues] = useState<Map<number,string>>(new Map());
   const [userValues, setUserValues] = useState<Map<number,string>>(new Map());
   const [managerValues, setManagerValues] = useState<Map<number,string>>(new Map());

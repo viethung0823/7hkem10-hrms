@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.Map;
-import java.util.UUID;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -101,7 +100,7 @@ public class HrEmployeeDTO {
     private Long province;
 
     @NotNull
-    private UUID district;
+    private Long district;
 
     @NotNull
     private Long ward;
