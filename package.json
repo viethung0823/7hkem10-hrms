@@ -1,56 +1,78 @@
 {
-  "name": "hrm-frontend",
-  "author": "saugio50",
-  "scripts": {
-    "devserver": "webpack serve --open --mode development",
-    "build": "webpack --mode production",
-    "test": "jest"
+  "name": "@themesberg/volt-react-dashboard",
+  "description": "Volt React Dashboard is a free and open source admin dashboard template powered by React.js and Bootstrap 5",
+  "author": "Themesberg",
+  "keywords": [
+    "bootstrap 5",
+    "react",
+    "react dashboard",
+    "react admin template",
+    "free react",
+    "react ui library",
+    "react bootstrap 5",
+    "bootstrap 5 dashboard",
+    "themesberg"
+  ],
+  "license": "MIT",
+  "homepage": "https://demo.themesberg.com/volt-react-dashboard",
+  "bugs": {
+    "url": "https://github.com/themesberg/volt-react-dashboard/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/themesberg/volt-react-dashboard"
+  },
+  "version": "1.0.1",
   "dependencies": {
-    "@hookform/resolvers": "4.1.0",
-    "@popperjs/core": "2.11.8",
-    "axios": "1.7.9",
-    "bootstrap": "5.3.3",
-    "flatpickr": "4.6.13",
-    "http-status-codes": "2.3.0",
-    "i18next": "24.2.2",
-    "react": "19.0.0",
-    "react-dom": "19.0.0",
-    "react-hook-form": "7.54.2",
-    "react-i18next": "15.4.0",
-    "react-router": "7.1.5",
-    "yup": "1.6.1"
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.17",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@themesberg/react-bootstrap": "^1.4.1",
+    "bootstrap": "5.0.0-beta1",
+    "chartist": "^0.11.4",
+    "chartist-plugin-tooltips-updated": "^0.1.4",
+    "moment-timezone": "^0.5.31",
+    "react": "^16.13.1",
+    "react-chartist": "^0.14.4",
+    "react-copy-to-clipboard": "^5.0.3",
+    "react-datetime": "^3.0.4",
+    "react-dom": "^16.13.1",
+    "react-github-btn": "^1.2.0",
+    "react-live": "^2.2.3",
+    "react-router-dom": "^5.2.0",
+    "react-router-hash-link": "^2.3.1",
+    "react-scripts": "3.4.3",
+    "react-transition-group": "^4.4.1",
+    "sass": "^1.50.0",
+    "simplebar-react": "^2.3.0"
   },
-  "devDependencies": {
-    "@babel/core": "7.26.9",
-    "@testing-library/dom": "10.4.0",
-    "@testing-library/jest-dom": "6.6.3",
-    "@testing-library/react": "16.2.0",
-    "@types/jest": "29.5.14",
-    "@types/react": "19.0.9",
-    "@types/react-dom": "19.0.3",
-    "autoprefixer": "10.4.20",
-    "copy-webpack-plugin": "12.0.2",
-    "css-loader": "7.1.2",
-    "css-minimizer-webpack-plugin": "7.0.0",
-    "dotenv-webpack": "8.1.0",
-    "jest": "29.7.0",
-    "jest-environment-jsdom": "29.7.0",
-    "html-webpack-plugin": "5.6.3",
-    "mini-css-extract-plugin": "2.9.2",
-    "postcss-loader": "8.1.1",
-    "postcss-preset-env": "10.1.4",
-    "sass": "1.77.6",
-    "sass-loader": "14.2.1",
-    "style-loader": "4.0.0",
-    "ts-jest": "29.2.5",
-    "ts-loader": "9.5.2",
-    "tsconfig-paths-webpack-plugin": "4.2.0",
-    "typescript": "5.6.3",
-    "warnings-to-errors-webpack-plugin": "2.3.0",
-    "webpack": "5.98.0",
-    "webpack-cli": "6.0.1",
-    "webpack-dev-server": "5.2.0"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "build-local": "PUBLIC_URL=./ react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
-  "private": true
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
