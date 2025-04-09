@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/hrm}
-    username: ${JDBC_DATABASE_USERNAME:postgres}
-    password: ${JDBC_DATABASE_PASSWORD:<<YOUR_PASSWORD>>}
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/oop_hrm}
+    username: ${JDBC_DATABASE_USERNAME:odoo}
+    password: ${JDBC_DATABASE_PASSWORD:admin}
     hikari:
       connection-timeout: 30000
       maximum-pool-size: 10
@@ -37,4 +37,4 @@ error:
       ResProvinceCodeUnique: RES_PROVINCE_CODE_UNIQUE
       ResDistrictCodeUnique: RES_DISTRICT_CODE_UNIQUE
 springdoc:
-  pathsToMatch: /api/**
+  pathsToMatch: /, /api/**
