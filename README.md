@@ -1,44 +1,23 @@
-# Hrm
+# 7h kém 10 - Human resource management system
 
-This app was created with Bootify.io - tips on working with the code [can be found here](https://bootify.io/next-steps/).
+# ------TO BE UPDATE------ #
 
-## Development
+## Description
 
-When starting the application `docker compose up` is called and the app will connect to the contained services.
-[Docker](https://www.docker.com/get-started/) must be available on the current system.
+## Getting Started
 
-During development it is recommended to use the profile `local`. In IntelliJ `-Dspring.profiles.active=local` can be
-added in the VM options of the Run Configuration after enabling this property in "Modify options". Create your own
-`application-local.yml` file to override settings for development.
+### Dependencies
 
-Lombok must be supported by your IDE. For IntelliJ install the Lombok plugin and enable annotation processing -
-[learn more](https://bootify.io/next-steps/spring-boot-with-lombok.html).
+### Installing
 
-After starting the application it is accessible under `localhost:8080`.
+### Executing program
 
-## Build
+## Help
 
-The application can be built using the following command:
+## Authors
 
-```
-mvnw clean package
-```
+## Version History
 
-Start your application with the following command - here with the profile `production`:
+## License
 
-```
-java -Dspring.profiles.active=production -jar ./target/HRM-0.0.1-SNAPSHOT.jar
-```
-
-If required, a Docker image can be created with the Spring Boot plugin. Add `SPRING_PROFILES_ACTIVE=production` as
-environment variable when running the container.
-
-```
-mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=com.oop7hkem10/hrm
-```
-
-## Further readings
-
-* [Maven docs](https://maven.apache.org/guides/index.html)  
-* [Spring Boot reference](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)  
-* [Spring Data JPA reference](https://docs.spring.io/spring-data/jpa/reference/jpa.html)
+## Acknowledgments
