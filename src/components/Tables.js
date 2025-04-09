@@ -1,9 +1,8 @@
-
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp, faArrowDown, faArrowUp, faEdit, faEllipsisH, faExternalLinkAlt, faEye, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, Pagination, ButtonGroup } from '@themesberg/react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import { Routes } from "../routes";
 import { pageVisits, pageTraffic, pageRanking } from "../data/tables";
@@ -291,6 +290,53 @@ export const TransactionsTable = () => {
             Showing <b>{totalTransactions}</b> out of <b>25</b> entries
           </small>
         </Card.Footer>
+      </Card.Body>
+    </Card>
+  );
+};
+
+export const EmployeeTable = ({ employeeList }) => {
+  const history = useHistory();
+
+  const handleRowClick = (id) => {
+    history.push(`/employee/${id}`);
+  };
+
+  const TableRow = (props) => {
+    const { id, name, workPhone, dateJoin, dateLeft, birthday, currentAddress } = props;
+
+    return (
+      <tr onClick={() => handleRowClick(id)} style={{ cursor: "pointer" }}>
+        <td>{id}</td>
+        <td>{name}</td>
+        <td>{workPhone}</td>
+        <td>{dateJoin}</td>
+        <td>{dateLeft || 'N/A'}</td>
+        <td>{birthday}</td>
+        <td>{currentAddress}</td>
+      </tr>
+    );
+  };
+
+  return (
+    <Card border="light" className="table-wrapper table-responsive shadow-sm">
+      <Card.Body className="pt-0">
+        <Table hover className="user-table align-items-center">
+          <thead>
+            <tr>
+              <th className="border-bottom">ID</th>
+              <th className="border-bottom">Name</th>
+              <th className="border-bottom">Work Phone</th>
+              <th className="border-bottom">Date Joined</th>
+              <th className="border-bottom">Date Left</th>
+              <th className="border-bottom">Birthday</th>
+              <th className="border-bottom">Current Address</th>
+            </tr>
+          </thead>
+          <tbody>
+            {employeeList.map(employee => <TableRow key={employee.id} {...employee} />)}
+          </tbody>
+        </Table>
       </Card.Body>
     </Card>
   );

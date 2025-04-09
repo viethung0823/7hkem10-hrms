@@ -21,12 +21,6 @@ export default [
         "link": Routes.DashboardOverview.path
     },
     {
-        "id": 2,
-        "name": "Transactions",
-        "image": TransactionsImg,
-        "link": Routes.Transactions.path
-    },
-    {
         "id": 3,
         "name": "Settings",
         "image": SettingsImg,
