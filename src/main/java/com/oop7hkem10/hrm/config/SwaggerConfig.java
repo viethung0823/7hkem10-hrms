@@ -10,6 +10,8 @@ import io.swagger.v3.oas.models.media.ObjectSchema;
 import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.oas.models.media.StringSchema;
 import io.swagger.v3.oas.models.responses.ApiResponse;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springdoc.core.customizers.OperationCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,9 +20,17 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SwaggerConfig {
 
+    private SecurityScheme createAPIKeyScheme() {
+        return new SecurityScheme().type(SecurityScheme.Type.HTTP)
+                .bearerFormat("JWT")
+                .scheme("bearer");
+    }
+
     @Bean
     public OpenAPI openApiSpec() {
-        return new OpenAPI().components(new Components()
+        return new OpenAPI().addSecurityItem(new SecurityRequirement().
+                addList("Bearer Authentication")).components(new Components().addSecuritySchemes
+                        ("Bearer Authentication", createAPIKeyScheme())
                 .addSchemas("ApiErrorResponse", new ObjectSchema()
                         .addProperty("status", new IntegerSchema())
                         .addProperty("code", new StringSchema())

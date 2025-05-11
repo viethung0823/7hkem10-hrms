@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/oop_hrm}
-    username: ${JDBC_DATABASE_USERNAME:odoo}
-    password: ${JDBC_DATABASE_PASSWORD:admin}
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/oop_hrms_v1}
+    username: oop
+    password: xL0-HH4O3aX_kjOD1OK8
     hikari:
       connection-timeout: 30000
       maximum-pool-size: 10
@@ -38,3 +38,8 @@ error:
       ResDistrictCodeUnique: RES_DISTRICT_CODE_UNIQUE
 springdoc:
   pathsToMatch: /, /api/**
+jwt:
+  secret: 39a7fa5e692ca53dc9b8f7a7da088bd8dd108481385bac7779205a03e6e4bdd4ccc4eda52ae2fa554a89c9b71a797e8bdd3e2ec40e101f41ac1b49097a87ce3577639630c8bf095ba1517271535f006a5a3a3c9a5b8ae42099985949b9f3132d766a614528b66cd89ff57a9cf657b717f054feb521553ce2b81bc56027edba07d6244673d432c6d2a9a3f74cc686ac5b63434899ff7020a7bbd9e2da1f7f34f209e3a2706d08d082f454bee5634c649f0b97f35bdfdff4ef1ee162a9728dd6326b7adbd772314c9c5596d3de81dacf238e6bec14ee14fdf2126c3cf4da984bc19c5d67c24690f58886f28b37aa6f5c7f815c16e54089c1df855e3e5ab0349cc2
+  expiration: 3600000
+server:
+  forward-headers-strategy: framework

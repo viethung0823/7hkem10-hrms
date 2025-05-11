@@ -4,6 +4,8 @@ import com.oop7hkem10.hrm.domain.HrEmployee;
 import com.oop7hkem10.hrm.domain.ResUser;
 import com.oop7hkem10.hrm.domain.ResUserRole;
 import com.oop7hkem10.hrm.model.ResUserDTO;
+import com.oop7hkem10.hrm.model.ResUserRoleDTO;
+import com.oop7hkem10.hrm.model.ResUserResponseDTO;
 import com.oop7hkem10.hrm.repos.HrEmployeeRepository;
 import com.oop7hkem10.hrm.repos.ResUserRepository;
 import com.oop7hkem10.hrm.repos.ResUserRoleRepository;
@@ -12,7 +14,7 @@ import com.oop7hkem10.hrm.util.ReferencedWarning;
 import java.util.List;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
 public class ResUserService {
@@ -20,25 +22,30 @@ public class ResUserService {
     private final ResUserRepository resUserRepository;
     private final ResUserRoleRepository resUserRoleRepository;
     private final HrEmployeeRepository hrEmployeeRepository;
+    private final ResUserRoleService resUserRoleService;
+    private final PasswordEncoder passwordEncoder;
 
     public ResUserService(final ResUserRepository resUserRepository,
-            final ResUserRoleRepository resUserRoleRepository,
-            final HrEmployeeRepository hrEmployeeRepository) {
+                          final ResUserRoleRepository resUserRoleRepository,
+                          final HrEmployeeRepository hrEmployeeRepository,
+                          final ResUserRoleService resUserRoleService, PasswordEncoder passwordEncoder) {
         this.resUserRepository = resUserRepository;
         this.resUserRoleRepository = resUserRoleRepository;
         this.hrEmployeeRepository = hrEmployeeRepository;
+        this.resUserRoleService = resUserRoleService;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    public List<ResUserDTO> findAll() {
+    public List<ResUserResponseDTO> findAll() {
         final List<ResUser> resUsers = resUserRepository.findAll(Sort.by("id"));
         return resUsers.stream()
-                .map(resUser -> mapToDTO(resUser, new ResUserDTO()))
+                .map(resUser -> mapToResponseDTO(resUser, new ResUserResponseDTO()))
                 .toList();
     }
 
-    public ResUserDTO get(final Long id) {
+    public ResUserResponseDTO get(final Long id) {
         return resUserRepository.findById(id)
-                .map(resUser -> mapToDTO(resUser, new ResUserDTO()))
+                .map(resUser -> mapToResponseDTO(resUser, new ResUserResponseDTO()))
                 .orElseThrow(NotFoundException::new);
     }
 
@@ -67,10 +74,22 @@ public class ResUserService {
         resUserDTO.setRole(resUser.getRole() == null ? null : resUser.getRole().getId());
         return resUserDTO;
     }
+    private ResUserResponseDTO mapToResponseDTO(final ResUser resUser, final ResUserResponseDTO ResUserResponseDTO) {
+        ResUserResponseDTO.setId(resUser.getId());
+        ResUserResponseDTO.setUsername(resUser.getUsername());
+        ResUserResponseDTO.setName(resUser.getName());
+        ResUserRoleDTO resUserRoleDTO = null;
+        if (resUser.getRole() != null) {
+            long role_id = resUser.getRole().getId();
+            resUserRoleDTO = resUserRoleService.get(role_id);
+        }
+        ResUserResponseDTO.setRole(resUserRoleDTO);
+        return ResUserResponseDTO;
+    }
 
     private ResUser mapToEntity(final ResUserDTO resUserDTO, final ResUser resUser) {
         resUser.setUsername(resUserDTO.getUsername());
-        resUser.setPassword(resUserDTO.getPassword());
+        resUser.setPassword(passwordEncoder.encode(resUserDTO.getPassword()));
         resUser.setName(resUserDTO.getName());
         final ResUserRole role = resUserDTO.getRole() == null ? null : resUserRoleRepository.findById(resUserDTO.getRole())
                 .orElseThrow(() -> new NotFoundException("role not found"));
@@ -94,5 +113,4 @@ public class ResUserService {
         }
         return null;
     }
-
 }
