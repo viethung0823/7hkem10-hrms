@@ -1,9 +1,9 @@
 services:
   postgres:
-    image: postgres:17.3
+    image: postgres:17.4
     environment:
-    - POSTGRES_DB=hrm
-    - POSTGRES_USER=postgres
+    - POSTGRES_DB=HRM
+    - POSTGRES_USER=admin
     - POSTGRES_PASSWORD=P4ssword!
     ports:
     - 5433:5432

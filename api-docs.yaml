@@ -1,0 +1,2723 @@
+openapi: 3.1.0
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://127.0.0.1:8080
+    description: Generated server url
+paths:
+  /api/resUsers/{id}:
+    get:
+      tags:
+        - res-user-resource
+      operationId: getResUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResUserDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    put:
+      tags:
+        - res-user-resource
+      operationId: updateResUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResUserDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    delete:
+      tags:
+        - res-user-resource
+      operationId: deleteResUser
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: No Content
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resUserRoles/{id}:
+    get:
+      tags:
+        - res-user-role-resource
+      operationId: getResUserRole
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResUserRoleDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    put:
+      tags:
+        - res-user-role-resource
+      operationId: updateResUserRole
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResUserRoleDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    delete:
+      tags:
+        - res-user-role-resource
+      operationId: deleteResUserRole
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: No Content
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resProvinces/{id}:
+    get:
+      tags:
+        - res-province-resource
+      operationId: getResProvince
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResProvinceDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    put:
+      tags:
+        - res-province-resource
+      operationId: updateResProvince
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResProvinceDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    delete:
+      tags:
+        - res-province-resource
+      operationId: deleteResProvince
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: No Content
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resLocations/{id}:
+    get:
+      tags:
+        - res-location-resource
+      operationId: getResLocation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResLocationDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    put:
+      tags:
+        - res-location-resource
+      operationId: updateResLocation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResLocationDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    delete:
+      tags:
+        - res-location-resource
+      operationId: deleteResLocation
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: No Content
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resDistricts/{id}:
+    get:
+      tags:
+        - res-district-resource
+      operationId: getResDistrict
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResDistrictDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    put:
+      tags:
+        - res-district-resource
+      operationId: updateResDistrict
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResDistrictDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    delete:
+      tags:
+        - res-district-resource
+      operationId: deleteResDistrict
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: No Content
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resDistrictWards/{id}:
+    get:
+      tags:
+        - res-district-ward-resource
+      operationId: getResDistrictWard
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResDistrictWardDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    put:
+      tags:
+        - res-district-ward-resource
+      operationId: updateResDistrictWard
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResDistrictWardDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    delete:
+      tags:
+        - res-district-ward-resource
+      operationId: deleteResDistrictWard
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: No Content
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resCompanies/{id}:
+    get:
+      tags:
+        - res-company-resource
+      operationId: getResCompany
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ResCompanyDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    put:
+      tags:
+        - res-company-resource
+      operationId: updateResCompany
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResCompanyDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    delete:
+      tags:
+        - res-company-resource
+      operationId: deleteResCompany
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: No Content
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrJobTitles/{id}:
+    get:
+      tags:
+        - hr-job-title-resource
+      operationId: getHrJobTitle
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HrJobTitleDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    put:
+      tags:
+        - hr-job-title-resource
+      operationId: updateHrJobTitle
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HrJobTitleDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    delete:
+      tags:
+        - hr-job-title-resource
+      operationId: deleteHrJobTitle
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: No Content
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrJobPositions/{id}:
+    get:
+      tags:
+        - hr-job-position-resource
+      operationId: getHrJobPosition
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HrJobPositionDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    put:
+      tags:
+        - hr-job-position-resource
+      operationId: updateHrJobPosition
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HrJobPositionDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    delete:
+      tags:
+        - hr-job-position-resource
+      operationId: deleteHrJobPosition
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: No Content
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrEmployees/{id}:
+    get:
+      tags:
+        - hr-employee-resource
+      operationId: getHrEmployee
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HrEmployeeDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    put:
+      tags:
+        - hr-employee-resource
+      operationId: updateHrEmployee
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HrEmployeeDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    delete:
+      tags:
+        - hr-employee-resource
+      operationId: deleteHrEmployee
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: No Content
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrDepartments/{id}:
+    get:
+      tags:
+        - hr-department-resource
+      operationId: getHrDepartment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HrDepartmentDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    put:
+      tags:
+        - hr-department-resource
+      operationId: updateHrDepartment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HrDepartmentDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    delete:
+      tags:
+        - hr-department-resource
+      operationId: deleteHrDepartment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: No Content
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrContracts/{id}:
+    get:
+      tags:
+        - hr-contract-resource
+      operationId: getHrContract
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HrContractDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    put:
+      tags:
+        - hr-contract-resource
+      operationId: updateHrContract
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HrContractDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    delete:
+      tags:
+        - hr-contract-resource
+      operationId: deleteHrContract
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: No Content
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrContractTypes/{id}:
+    get:
+      tags:
+        - hr-contract-type-resource
+      operationId: getHrContractType
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HrContractTypeDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    put:
+      tags:
+        - hr-contract-type-resource
+      operationId: updateHrContractType
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HrContractTypeDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    delete:
+      tags:
+        - hr-contract-type-resource
+      operationId: deleteHrContractType
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: No Content
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrContractAnnexes/{id}:
+    get:
+      tags:
+        - hr-contract-annex-resource
+      operationId: getHrContractAnnex
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HrContractAnnexDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    put:
+      tags:
+        - hr-contract-annex-resource
+      operationId: updateHrContractAnnex
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HrContractAnnexDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    delete:
+      tags:
+        - hr-contract-annex-resource
+      operationId: deleteHrContractAnnex
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "204":
+          description: No Content
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resUsers:
+    get:
+      tags:
+        - res-user-resource
+      operationId: getAllResUsers
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResUserDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+        - res-user-resource
+      operationId: createResUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResUserDTO"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resUserRoles:
+    get:
+      tags:
+        - res-user-role-resource
+      operationId: getAllResUserRoles
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResUserRoleDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+        - res-user-role-resource
+      operationId: createResUserRole
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResUserRoleDTO"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resProvinces:
+    get:
+      tags:
+        - res-province-resource
+      operationId: getAllResProvinces
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResProvinceDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+        - res-province-resource
+      operationId: createResProvince
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResProvinceDTO"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resLocations:
+    get:
+      tags:
+        - res-location-resource
+      operationId: getAllResLocations
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResLocationDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+        - res-location-resource
+      operationId: createResLocation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResLocationDTO"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resDistricts:
+    get:
+      tags:
+        - res-district-resource
+      operationId: getAllResDistricts
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResDistrictDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+        - res-district-resource
+      operationId: createResDistrict
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResDistrictDTO"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resDistrictWards:
+    get:
+      tags:
+        - res-district-ward-resource
+      operationId: getAllResDistrictWards
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResDistrictWardDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+        - res-district-ward-resource
+      operationId: createResDistrictWard
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResDistrictWardDTO"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resCompanies:
+    get:
+      tags:
+        - res-company-resource
+      operationId: getAllResCompanies
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ResCompanyDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+        - res-company-resource
+      operationId: createResCompany
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ResCompanyDTO"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrJobTitles:
+    get:
+      tags:
+        - hr-job-title-resource
+      operationId: getAllHrJobTitles
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/HrJobTitleDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+        - hr-job-title-resource
+      operationId: createHrJobTitle
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HrJobTitleDTO"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrJobPositions:
+    get:
+      tags:
+        - hr-job-position-resource
+      operationId: getAllHrJobPositions
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/HrJobPositionDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+        - hr-job-position-resource
+      operationId: createHrJobPosition
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HrJobPositionDTO"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrEmployees:
+    get:
+      tags:
+        - hr-employee-resource
+      operationId: getAllHrEmployees
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/HrEmployeeDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+        - hr-employee-resource
+      operationId: createHrEmployee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HrEmployeeDTO"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrDepartments:
+    get:
+      tags:
+        - hr-department-resource
+      operationId: getAllHrDepartments
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/HrDepartmentDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+        - hr-department-resource
+      operationId: createHrDepartment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HrDepartmentDTO"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrContracts:
+    get:
+      tags:
+        - hr-contract-resource
+      operationId: getAllHrContracts
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/HrContractDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+        - hr-contract-resource
+      operationId: createHrContract
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HrContractDTO"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrContractTypes:
+    get:
+      tags:
+        - hr-contract-type-resource
+      operationId: getAllHrContractTypes
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/HrContractTypeDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+        - hr-contract-type-resource
+      operationId: createHrContractType
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HrContractTypeDTO"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrContractAnnexes:
+    get:
+      tags:
+        - hr-contract-annex-resource
+      operationId: getAllHrContractAnnexes
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/HrContractAnnexDTO"
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+    post:
+      tags:
+        - hr-contract-annex-resource
+      operationId: createHrContractAnnex
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/HrContractAnnexDTO"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: integer
+                format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resUsers/roleValues:
+    get:
+      tags:
+        - res-user-resource
+      operationId: getRoleValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resLocations/provinceValues:
+    get:
+      tags:
+        - res-location-resource
+      operationId: getProvinceValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resLocations/districtValues:
+    get:
+      tags:
+        - res-location-resource
+      operationId: getDistrictValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resLocations/districWardValues:
+    get:
+      tags:
+        - res-location-resource
+      operationId: getDistricWardValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resDistricts/provinceValues:
+    get:
+      tags:
+        - res-district-resource
+      operationId: getProvinceValues_1
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/resDistrictWards/districtValues:
+    get:
+      tags:
+        - res-district-ward-resource
+      operationId: getDistrictValues_1
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrJobPositions/locationValues:
+    get:
+      tags:
+        - hr-job-position-resource
+      operationId: getLocationValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrJobPositions/departmentValues:
+    get:
+      tags:
+        - hr-job-position-resource
+      operationId: getDepartmentValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrJobPositions/companyValues:
+    get:
+      tags:
+        - hr-job-position-resource
+      operationId: getCompanyValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrEmployees/wardValues:
+    get:
+      tags:
+        - hr-employee-resource
+      operationId: getWardValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrEmployees/userValues:
+    get:
+      tags:
+        - hr-employee-resource
+      operationId: getUserValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrEmployees/provinceValues:
+    get:
+      tags:
+        - hr-employee-resource
+      operationId: getProvinceValues_2
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrEmployees/managerValues:
+    get:
+      tags:
+        - hr-employee-resource
+      operationId: getManagerValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrEmployees/jobTitleValues:
+    get:
+      tags:
+        - hr-employee-resource
+      operationId: getJobTitleValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrEmployees/jobPositionValues:
+    get:
+      tags:
+        - hr-employee-resource
+      operationId: getJobPositionValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrEmployees/districtValues:
+    get:
+      tags:
+        - hr-employee-resource
+      operationId: getDistrictValues_2
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrEmployees/departmentValues:
+    get:
+      tags:
+        - hr-employee-resource
+      operationId: getDepartmentValues_1
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrEmployees/companyValues:
+    get:
+      tags:
+        - hr-employee-resource
+      operationId: getCompanyValues_1
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrDepartments/parentValues:
+    get:
+      tags:
+        - hr-department-resource
+      operationId: getParentValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrDepartments/companyValues:
+    get:
+      tags:
+        - hr-department-resource
+      operationId: getCompanyValues_2
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrContracts/jobTitleValues:
+    get:
+      tags:
+        - hr-contract-resource
+      operationId: getJobTitleValues_1
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrContracts/jobPositionValues:
+    get:
+      tags:
+        - hr-contract-resource
+      operationId: getJobPositionValues_1
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrContracts/employeeValues:
+    get:
+      tags:
+        - hr-contract-resource
+      operationId: getEmployeeValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrContracts/departmentValues:
+    get:
+      tags:
+        - hr-contract-resource
+      operationId: getDepartmentValues_2
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrContracts/contractTypeValues:
+    get:
+      tags:
+        - hr-contract-resource
+      operationId: getContractTypeValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrContracts/companyValues:
+    get:
+      tags:
+        - hr-contract-resource
+      operationId: getCompanyValues_3
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+  /api/hrContractAnnexes/contractValues:
+    get:
+      tags:
+        - hr-contract-annex-resource
+      operationId: getContractValues
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                  format: int64
+        "4xx/5xx":
+          description: Error
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ApiErrorResponse"
+components:
+  schemas:
+    ApiErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          format: int32
+        code:
+          type: string
+        message:
+          type: string
+        fieldErrors:
+          type: array
+          items:
+            $ref: "#/components/schemas/ApiFieldError"
+    ApiFieldError:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+        property:
+          type: string
+        rejectedValue:
+          type: object
+        path:
+          type: string
+    ResUserDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+          maxLength: 255
+          minLength: 0
+        password:
+          type: string
+          maxLength: 255
+          minLength: 0
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+        role:
+          type: array
+          items:
+            type: integer
+            format: int64
+      required:
+        - username
+    ResUserRoleDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+    ResProvinceDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+        code:
+          type: string
+          maxLength: 255
+          minLength: 0
+      required:
+        - code
+        - name
+    ResLocationDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+        latitude:
+          type: integer
+          format: int64
+        longitude:
+          type: integer
+          format: int64
+        street:
+          type: string
+          maxLength: 255
+          minLength: 0
+        districWard:
+          type: integer
+          format: int64
+        province:
+          type: integer
+          format: int64
+        district:
+          type: integer
+          format: int64
+    ResDistrictDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+        code:
+          type: string
+          maxLength: 255
+          minLength: 0
+        province:
+          type: integer
+          format: int64
+      required:
+        - code
+        - name
+        - province
+    ResDistrictWardDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+        code:
+          type: string
+          maxLength: 255
+          minLength: 0
+        district:
+          type: integer
+          format: int64
+      required:
+        - code
+        - district
+        - name
+    ResCompanyDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+        address:
+          type: string
+          maxLength: 255
+          minLength: 0
+        phone:
+          type: string
+          maxLength: 255
+          minLength: 0
+        email:
+          type: string
+          maxLength: 255
+          minLength: 0
+        website:
+          type: string
+          maxLength: 255
+          minLength: 0
+        taxCode:
+          type: string
+          maxLength: 255
+          minLength: 0
+    HrJobTitleDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+        code:
+          type: string
+          maxLength: 255
+          minLength: 0
+        description:
+          type: string
+          maxLength: 255
+          minLength: 0
+      required:
+        - code
+        - name
+    HrJobPositionDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+        targetRecruitment:
+          type: integer
+          format: int32
+        jobSummary:
+          type: string
+        company:
+          type: integer
+          format: int64
+        department:
+          type: integer
+          format: int64
+        location:
+          type: integer
+          format: int64
+        isRecruiting:
+          type: boolean
+      required:
+        - company
+    HrEmployeeDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+        code:
+          type: string
+          maxLength: 255
+          minLength: 0
+        email:
+          type: string
+          maxLength: 255
+          minLength: 0
+        workPhone:
+          type: string
+          maxLength: 255
+          minLength: 0
+        gender:
+          type: string
+          enum:
+            - MALE
+            - FEMALE
+        status:
+          type: object
+          additionalProperties:
+            type: string
+        dateJoin:
+          type: string
+          format: date
+        dateLeft:
+          type: string
+          format: date
+        country:
+          type: string
+          maxLength: 255
+          minLength: 0
+        idNumber:
+          type: string
+          maxLength: 255
+          minLength: 0
+        idDate:
+          type: string
+          format: date
+        idAddress:
+          type: string
+          maxLength: 255
+          minLength: 0
+        birthday:
+          type: string
+          format: date
+        placeOfBirth:
+          type: string
+          maxLength: 255
+          minLength: 0
+        permanentAddress:
+          type: string
+          maxLength: 255
+          minLength: 0
+        currentAddress:
+          type: string
+          maxLength: 255
+          minLength: 0
+        passport:
+          type: string
+          maxLength: 255
+          minLength: 0
+        maritalStatus:
+          type: object
+          additionalProperties:
+            type: string
+        emergencyContact:
+          type: string
+          maxLength: 255
+          minLength: 0
+        emergencyPhone:
+          type: string
+          maxLength: 255
+          minLength: 0
+        socialInsuranceCode:
+          type: string
+          maxLength: 255
+          minLength: 0
+        taxCode:
+          type: string
+          maxLength: 255
+          minLength: 0
+        religion:
+          type: string
+          maxLength: 255
+          minLength: 0
+        company:
+          type: integer
+          format: int64
+        department:
+          type: integer
+          format: int64
+        jobPosition:
+          type: integer
+          format: int64
+        jobTitle:
+          type: integer
+          format: int64
+        province:
+          type: integer
+          format: int64
+        district:
+          type: integer
+          format: int64
+        ward:
+          type: integer
+          format: int64
+        user:
+          type: integer
+          format: int64
+        manager:
+          type: integer
+          format: int64
+        isUnion:
+          type: boolean
+      required:
+        - code
+        - company
+        - department
+        - district
+        - gender
+        - jobPosition
+        - jobTitle
+        - name
+        - province
+        - user
+        - ward
+    HrDepartmentDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        code:
+          type: string
+          maxLength: 255
+          minLength: 0
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+        parent:
+          type: integer
+          format: int64
+        company:
+          type: integer
+          format: int64
+      required:
+        - code
+        - company
+        - name
+    HrContractDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+        code:
+          type: string
+          maxLength: 255
+          minLength: 0
+        dateFrom:
+          type: string
+          format: date
+        dateTo:
+          type: string
+          format: date
+        salary:
+          type: string
+          maxLength: 255
+          minLength: 0
+        status:
+          type: object
+          additionalProperties:
+            type: string
+        employee:
+          type: integer
+          format: int64
+        contractType:
+          type: integer
+          format: int64
+        jobPosition:
+          type: integer
+          format: int64
+        jobTitle:
+          type: integer
+          format: int64
+        department:
+          type: integer
+          format: int64
+        company:
+          type: integer
+          format: int64
+      required:
+        - company
+        - contractType
+        - department
+        - jobPosition
+        - jobTitle
+    HrContractTypeDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+        code:
+          type: string
+          maxLength: 255
+          minLength: 0
+        isUnlimited:
+          type: boolean
+        isProbationaryContract:
+          type: boolean
+    HrContractAnnexDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          maxLength: 255
+          minLength: 0
+        number:
+          type: string
+          maxLength: 255
+          minLength: 0
+        content:
+          type: string
+          maxLength: 255
+          minLength: 0
+        dateEfective:
+          type: string
+          format: date
+        contract:
+          type: integer
+          format: int64
