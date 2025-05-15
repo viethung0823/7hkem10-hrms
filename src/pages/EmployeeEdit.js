@@ -156,6 +156,7 @@ export default () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    placeholder="Enter email address"
                   />
                 </Form.Group>
               </Col>

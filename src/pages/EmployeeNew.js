@@ -11,6 +11,7 @@ export default () => {
     id: 9007199254740991,
     name: '',
     code: '',
+    email: '',
     workPhone: '',
     gender: 'MALE',
     dateJoin: '',
@@ -37,8 +38,8 @@ export default () => {
     department: 9007199254740991,
     jobPosition: 9007199254740991,
     jobTitle: 9007199254740991,
-    user: 9007199254740991,
-    manager: 9007199254740991,
+    user: '',
+    manager: null,
     isUnion: false
   });
 
@@ -51,6 +52,9 @@ export default () => {
 
   const [companies, setCompanies] = useState([]);
   const [departments, setDepartments] = useState([]);
+  const [jobPositions, setJobPositions] = useState([]);
+  const [jobTitles, setJobTitles] = useState([]);
+  const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
@@ -62,6 +66,8 @@ export default () => {
     const districts = JSON.parse(localStorage.getItem('districts') || '[]');
     const districtWards = JSON.parse(localStorage.getItem('districtWards') || '[]');
     const locations = JSON.parse(localStorage.getItem('locations') || '[]');
+    const companies = JSON.parse(localStorage.getItem('companies') || '[]');
+    const departments = JSON.parse(localStorage.getItem('departments') || '[]');
 
     console.log('Loaded location data:', { provinces, districts, districtWards }); // Debug log
 
@@ -72,15 +78,20 @@ export default () => {
       locations
     });
 
-    // Fetch companies and departments
+    setCompanies(companies);
+    setDepartments(departments);
+
+    // Fetch job positions, job titles, and users
     const fetchData = async () => {
       try {
-        const [companiesData, departmentsData] = await Promise.all([
-          apiService.getCompanies(),
-          apiService.getDepartments()
+        const [positionsData, titlesData, usersData] = await Promise.all([
+          apiService.getJobPositions(),
+          apiService.getJobTitles(),
+          apiService.getUsers()
         ]);
-        setCompanies(companiesData);
-        setDepartments(departmentsData);
+        setJobPositions(positionsData);
+        setJobTitles(titlesData);
+        setUsers(usersData);
       } catch (error) {
         console.error('Error fetching data:', error);
         setError('Failed to load data');
@@ -110,9 +121,17 @@ export default () => {
     } catch (error) {
       console.error('Create employee error:', error);
       if (error.response?.data) {
-        // Handle API error response
         const errorData = error.response.data;
-        setError(errorData.message || 'Failed to create employee');
+        if (errorData.fieldErrors && errorData.fieldErrors.length > 0) {
+          const fieldError = errorData.fieldErrors[0];
+          if (fieldError.code === 'HR_EMPLOYEE_USER_UNIQUE') {
+            setError('This user account is already associated with another employee');
+          } else {
+            setError(fieldError.message);
+          }
+        } else {
+          setError(errorData.message || 'Failed to create employee');
+        }
       } else {
         setError(error.message || 'Failed to create employee');
       }
@@ -167,20 +186,37 @@ export default () => {
                   </Col>
                   <Col md={6} className="mb-3">
                     <Form.Group>
-                      <Form.Label>Code</Form.Label>
-                      <Form.Control
-                        required
-                        type="text"
-                        name="code"
-                        value={formData.code}
+                      <Form.Label>User Account</Form.Label>
+                      <Form.Select
+                        name="user"
+                        value={formData.user}
                         onChange={handleChange}
-                        placeholder="Enter employee code"
-                      />
+                        required
+                      >
+                        <option value="">Select User Account</option>
+                        {users.map(user => (
+                          <option key={user.id} value={user.id}>
+                            {user.name} ({user.username})
+                          </option>
+                        ))}
+                      </Form.Select>
                     </Form.Group>
                   </Col>
                 </Row>
 
                 <Row>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Email</Form.Label>
+                      <Form.Control
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        placeholder="Enter email address"
+                      />
+                    </Form.Group>
+                  </Col>
                   <Col md={6} className="mb-3">
                     <Form.Group>
                       <Form.Label>Phone</Form.Label>
@@ -190,6 +226,22 @@ export default () => {
                         value={formData.workPhone}
                         onChange={handleChange}
                         placeholder="Enter phone number"
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Code</Form.Label>
+                      <Form.Control
+                        required
+                        type="text"
+                        name="code"
+                        value={formData.code}
+                        onChange={handleChange}
+                        placeholder="Enter employee code"
                       />
                     </Form.Group>
                   </Col>
@@ -265,15 +317,53 @@ export default () => {
                       >
                         <option value="">Select Department</option>
                         {departments
-                          .filter(dept => {
-                            console.log('Department:', dept, 'Selected company:', formData.company);
-                            return !formData.company || parseInt(dept.company) === parseInt(formData.company);
-                          })
+                          .filter(dept => !formData.company || parseInt(dept.company) === parseInt(formData.company))
                           .map(dept => (
                             <option key={dept.id} value={dept.id}>
-                              {dept.name} ({dept.code})
+                              {dept.name}
                             </option>
                           ))}
+                      </Form.Select>
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Job Position</Form.Label>
+                      <Form.Select
+                        name="jobPosition"
+                        value={formData.jobPosition}
+                        onChange={handleChange}
+                        required
+                      >
+                        <option value="">Select Job Position</option>
+                        {jobPositions
+                          .filter(job => !formData.department || parseInt(job.department) === parseInt(formData.department))
+                          .map(job => (
+                            <option key={job.id} value={job.id}>
+                              {job.name}
+                            </option>
+                          ))}
+                      </Form.Select>
+                    </Form.Group>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Job Title</Form.Label>
+                      <Form.Select
+                        name="jobTitle"
+                        value={formData.jobTitle}
+                        onChange={handleChange}
+                        required
+                      >
+                        <option value="">Select Job Title</option>
+                        {jobTitles.map(title => (
+                          <option key={title.id} value={title.id}>
+                            {title.name}
+                          </option>
+                        ))}
                       </Form.Select>
                     </Form.Group>
                   </Col>

@@ -160,7 +160,7 @@ export default () => {
                 </Col>
                 <Col md={6} className="mb-3">
                   <h6>Marital Status</h6>
-                  <p>{employee.maritalStatus || 'N/A'}</p>
+                  <p>{employee.maritalStatus?.name || 'N/A'}</p>
                 </Col>
               </Row>
             </Card.Body>
