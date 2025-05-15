@@ -133,11 +133,15 @@ export default (props = {}) => {
               </CollapsableNavItem>
               <CollapsableNavItem eventKey="employees" title="Employee" icon={faTable}>
                 <NavItem title="View All Employees" link={Routes.Employee.path} />
-                <NavItem title="View All Job Titles" link={Routes.JobTitle.path} />
               </CollapsableNavItem>
               <CollapsableNavItem eventKey="contracts" title="Contract" icon={faTable}>
                 <NavItem title="View All Contracts" link={Routes.Contract.path} />
                 <NavItem title="Contract Types" link={Routes.ContractType.path} />
+              </CollapsableNavItem>
+              <CollapsableNavItem eventKey="company" title="Company" icon={faTable}>
+                <NavItem title="Job Positions" link={Routes.JobPosition.path} />
+                <NavItem title="Job Titles" link={Routes.JobTitle.path} />
+                <NavItem title="Departments" link={Routes.Department.path} />
               </CollapsableNavItem>
               {/* <NavItem external title="Calendar" link="https://demo.themesberg.com/volt-pro-react/#/calendar" target="_blank" badgeText="Pro" icon={faCalendarAlt} /> */}
               {/* <NavItem external title="Map" link="https://demo.themesberg.com/volt-pro-react/#/map" target="_blank" badgeText="Pro" icon={faMapPin} /> */}

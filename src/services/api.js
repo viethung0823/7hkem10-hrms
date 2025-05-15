@@ -2,7 +2,7 @@ import axios from 'axios';
 import { employeeList } from "../data/mockData";
 
 // API URL configuration
-const API_URL = 'https://33d2-52-77-212-138.ngrok-free.app';
+const API_URL = 'http://localhost:3000';
 
 // Helper function to get token from localStorage
 const getToken = () => {
@@ -164,6 +164,43 @@ export const apiService = {
     return apiCall('/api/hrDepartments', getHeaders());
   },
 
+  async getDepartment(id) {
+    return apiCall(`/api/hrDepartments/${id}`, getHeaders());
+  },
+
+  async createDepartment(data) {
+    return apiCall('/api/hrDepartments', getHeaders('POST', data));
+  },
+
+  async updateDepartment(id, data) {
+    return apiCall(`/api/hrDepartments/${id}`, getHeaders('PUT', data));
+  },
+
+  async deleteDepartment(id) {
+    return apiCall(`/api/hrDepartments/${id}`, getHeaders('DELETE'));
+  },
+
+  // Job Position APIs
+  async getJobPositions() {
+    return apiCall('/api/hrJobPositions', getHeaders());
+  },
+
+  async getJobPosition(id) {
+    return apiCall(`/api/hrJobPositions/${id}`, getHeaders());
+  },
+
+  async createJobPosition(data) {
+    return apiCall('/api/hrJobPositions', getHeaders('POST', data));
+  },
+
+  async updateJobPosition(id, data) {
+    return apiCall(`/api/hrJobPositions/${id}`, getHeaders('PUT', data));
+  },
+
+  async deleteJobPosition(id) {
+    return apiCall(`/api/hrJobPositions/${id}`, getHeaders('DELETE'));
+  },
+
   // Auth APIs
   signIn: async (username, password) => {
     try {
@@ -186,21 +223,25 @@ export const apiService = {
         localStorage.setItem('token', token);
         localStorage.setItem('username', username);
 
-        // Fetch and store location data
+        // Fetch and store location, company, and department data
         try {
-          const [provinces, districts, districtWards, locations] = await Promise.all([
+          const [provinces, districts, districtWards, locations, companies, departments] = await Promise.all([
             apiService.getProvinces(),
             apiService.getDistricts(),
             apiService.getDistrictWards(),
-            apiService.getLocations()
+            apiService.getLocations(),
+            apiService.getCompanies(),
+            apiService.getDepartments()
           ]);
 
           localStorage.setItem('provinces', JSON.stringify(provinces));
           localStorage.setItem('districts', JSON.stringify(districts));
           localStorage.setItem('districtWards', JSON.stringify(districtWards));
           localStorage.setItem('locations', JSON.stringify(locations));
+          localStorage.setItem('companies', JSON.stringify(companies));
+          localStorage.setItem('departments', JSON.stringify(departments));
         } catch (error) {
-          console.error('Error fetching location data:', error);
+          console.error('Error fetching data:', error);
         }
       }
       return token;

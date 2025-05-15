@@ -83,6 +83,39 @@ export const Routes = {
         path: "/job-titles/:id/edit",
         component: React.lazy(() => import("./pages/JobTitleEdit")),
     },
+    // Company Management Routes
+    JobPosition: {
+        path: "/job-positions",
+        component: React.lazy(() => import("./pages/JobPosition")),
+    },
+    JobPositionNew: {
+        path: "/job-positions/new",
+        component: React.lazy(() => import("./pages/JobPositionNew")),
+    },
+    JobPositionEdit: {
+        path: "/job-positions/:id/edit",
+        component: React.lazy(() => import("./pages/JobPositionEdit")),
+    },
+    JobPositionDetail: {
+        path: "/job-positions/:id",
+        component: React.lazy(() => import("./pages/JobPositionDetail")),
+    },
+    Department: {
+        path: "/departments",
+        component: React.lazy(() => import("./pages/Department")),
+    },
+    DepartmentNew: {
+        path: "/departments/new",
+        component: React.lazy(() => import("./pages/DepartmentNew")),
+    },
+    DepartmentEdit: {
+        path: "/departments/:id/edit",
+        component: React.lazy(() => import("./pages/DepartmentEdit")),
+    },
+    DepartmentDetail: {
+        path: "/departments/:id",
+        component: React.lazy(() => import("./pages/DepartmentDetail")),
+    },
 
     // docs
     DocsOverview: { path: "/documentation/overview" },

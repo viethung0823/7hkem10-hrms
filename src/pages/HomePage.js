@@ -32,6 +32,14 @@ import JobTitle from "./JobTitle";
 import JobTitleNew from "./JobTitleNew";
 import JobTitleDetail from "./JobTitleDetail";
 import JobTitleEdit from "./JobTitleEdit";
+import JobPosition from "./JobPosition";
+import JobPositionNew from "./JobPositionNew";
+import JobPositionDetail from "./JobPositionDetail";
+import JobPositionEdit from "./JobPositionEdit";
+import Department from "./Department";
+import DepartmentNew from "./DepartmentNew";
+import DepartmentDetail from "./DepartmentDetail";
+import DepartmentEdit from "./DepartmentEdit";
 import User from "./User";
 import UserNew from "./UserNew";
 import UserDetail from "./UserDetail";
@@ -154,6 +162,16 @@ export default () => (
     <RouteWithSidebar exact path={Routes.JobTitleNew.path} component={JobTitleNew} />
     <RouteWithSidebar exact path={Routes.JobTitleDetail.path} component={JobTitleDetail} />
     <RouteWithSidebar exact path={Routes.JobTitleEdit.path} component={JobTitleEdit} />
+
+    {/* Company Management Routes */}
+    <RouteWithSidebar exact path={Routes.JobPosition.path} component={() => <JobPosition title="Job Position Management" showSearch={true} showSettings={true} />} />
+    <RouteWithSidebar exact path={Routes.JobPositionNew.path} component={JobPositionNew} />
+    <RouteWithSidebar exact path={Routes.JobPositionDetail.path} component={JobPositionDetail} />
+    <RouteWithSidebar exact path={Routes.JobPositionEdit.path} component={JobPositionEdit} />
+    <RouteWithSidebar exact path={Routes.Department.path} component={() => <Department title="Department Management" showSearch={true} showSettings={true} />} />
+    <RouteWithSidebar exact path={Routes.DepartmentNew.path} component={DepartmentNew} />
+    <RouteWithSidebar exact path={Routes.DepartmentDetail.path} component={DepartmentDetail} />
+    <RouteWithSidebar exact path={Routes.DepartmentEdit.path} component={DepartmentEdit} />
 
     {/* components */}
     <RouteWithSidebar exact path={Routes.Accordions.path} component={Accordion} />
