@@ -22,7 +22,10 @@ export default () => {
     dateLeft: '',
     status: '',
     isUnion: false,
-    currentAddress: '',
+    street: '',
+    province: '',
+    district: '',
+    districWard: '',
     permanentAddress: '',
     emergencyContact: '',
     emergencyPhone: '',
@@ -36,6 +39,27 @@ export default () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [locationData, setLocationData] = useState({
+    provinces: [],
+    districts: [],
+    districtWards: [],
+    locations: []
+  });
+
+  useEffect(() => {
+    // Load location data from localStorage
+    const provinces = JSON.parse(localStorage.getItem('provinces') || '[]');
+    const districts = JSON.parse(localStorage.getItem('districts') || '[]');
+    const districtWards = JSON.parse(localStorage.getItem('districtWards') || '[]');
+    const locations = JSON.parse(localStorage.getItem('locations') || '[]');
+
+    setLocationData({
+      provinces,
+      districts,
+      districtWards,
+      locations
+    });
+  }, []);
 
   useEffect(() => {
     const fetchEmployee = async () => {
@@ -223,6 +247,189 @@ export default () => {
                     checked={formData.isUnion}
                     onChange={handleChange}
                     label="Union Member"
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <h5 className="mb-4 mt-4">Contact Information</h5>
+            <Row>
+              <Col md={12} className="mb-3">
+                <Form.Group>
+                  <Form.Label>Street Address</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="street"
+                    value={formData.street}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={4} className="mb-3">
+                <Form.Group>
+                  <Form.Label>Province</Form.Label>
+                  <Form.Select
+                    name="province"
+                    value={formData.province}
+                    onChange={handleChange}
+                  >
+                    <option value="">Select Province</option>
+                    {locationData.provinces.map(province => (
+                      <option key={province.id} value={province.id}>
+                        {province.name}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col md={4} className="mb-3">
+                <Form.Group>
+                  <Form.Label>District</Form.Label>
+                  <Form.Select
+                    name="district"
+                    value={formData.district}
+                    onChange={handleChange}
+                  >
+                    <option value="">Select District</option>
+                    {locationData.districts
+                      .filter(district => !formData.province || district.province === formData.province)
+                      .map(district => (
+                        <option key={district.id} value={district.id}>
+                          {district.name}
+                        </option>
+                      ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col md={4} className="mb-3">
+                <Form.Group>
+                  <Form.Label>District Ward</Form.Label>
+                  <Form.Select
+                    name="districWard"
+                    value={formData.districWard}
+                    onChange={handleChange}
+                  >
+                    <option value="">Select District Ward</option>
+                    {locationData.districtWards
+                      .filter(ward => !formData.district || ward.district === formData.district)
+                      .map(ward => (
+                        <option key={ward.id} value={ward.id}>
+                          {ward.name}
+                        </option>
+                      ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={12} className="mb-3">
+                <Form.Group>
+                  <Form.Label>Permanent Address</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="permanentAddress"
+                    value={formData.permanentAddress}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={6} className="mb-3">
+                <Form.Group>
+                  <Form.Label>Emergency Contact</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="emergencyContact"
+                    value={formData.emergencyContact}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6} className="mb-3">
+                <Form.Group>
+                  <Form.Label>Emergency Phone</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="emergencyPhone"
+                    value={formData.emergencyPhone}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <h5 className="mb-4 mt-4">Identification Information</h5>
+            <Row>
+              <Col md={6} className="mb-3">
+                <Form.Group>
+                  <Form.Label>ID Number</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="idNumber"
+                    value={formData.idNumber}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6} className="mb-3">
+                <Form.Group>
+                  <Form.Label>ID Date</Form.Label>
+                  <Form.Control
+                    type="date"
+                    name="idDate"
+                    value={formData.idDate}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={6} className="mb-3">
+                <Form.Group>
+                  <Form.Label>ID Address</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="idAddress"
+                    value={formData.idAddress}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6} className="mb-3">
+                <Form.Group>
+                  <Form.Label>Passport</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="passport"
+                    value={formData.passport}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row>
+              <Col md={6} className="mb-3">
+                <Form.Group>
+                  <Form.Label>Social Insurance Code</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="socialInsuranceCode"
+                    value={formData.socialInsuranceCode}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
+              </Col>
+              <Col md={6} className="mb-3">
+                <Form.Group>
+                  <Form.Label>Tax Code</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="taxCode"
+                    value={formData.taxCode}
+                    onChange={handleChange}
                   />
                 </Form.Group>
               </Col>

@@ -137,6 +137,33 @@ export const apiService = {
     }
   },
 
+  // Location APIs
+  async getProvinces() {
+    return apiCall('/api/resProvinces', getHeaders());
+  },
+
+  async getDistricts() {
+    return apiCall('/api/resDistricts', getHeaders());
+  },
+
+  async getDistrictWards() {
+    return apiCall('/api/resDistrictWards', getHeaders());
+  },
+
+  async getLocations() {
+    return apiCall('/api/resLocations', getHeaders());
+  },
+
+  // Company APIs
+  async getCompanies() {
+    return apiCall('/api/resCompanies', getHeaders());
+  },
+
+  // Department APIs
+  async getDepartments() {
+    return apiCall('/api/hrDepartments', getHeaders());
+  },
+
   // Auth APIs
   signIn: async (username, password) => {
     try {
@@ -158,6 +185,23 @@ export const apiService = {
       if (token) {
         localStorage.setItem('token', token);
         localStorage.setItem('username', username);
+
+        // Fetch and store location data
+        try {
+          const [provinces, districts, districtWards, locations] = await Promise.all([
+            apiService.getProvinces(),
+            apiService.getDistricts(),
+            apiService.getDistrictWards(),
+            apiService.getLocations()
+          ]);
+
+          localStorage.setItem('provinces', JSON.stringify(provinces));
+          localStorage.setItem('districts', JSON.stringify(districts));
+          localStorage.setItem('districtWards', JSON.stringify(districtWards));
+          localStorage.setItem('locations', JSON.stringify(locations));
+        } catch (error) {
+          console.error('Error fetching location data:', error);
+        }
       }
       return token;
     } catch (error) {

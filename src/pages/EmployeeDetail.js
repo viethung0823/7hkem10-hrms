@@ -13,6 +13,27 @@ export default () => {
   const [error, setError] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
+  const [locationData, setLocationData] = useState({
+    provinces: [],
+    districts: [],
+    districtWards: [],
+    locations: []
+  });
+
+  useEffect(() => {
+    // Load location data from localStorage
+    const provinces = JSON.parse(localStorage.getItem('provinces') || '[]');
+    const districts = JSON.parse(localStorage.getItem('districts') || '[]');
+    const districtWards = JSON.parse(localStorage.getItem('districtWards') || '[]');
+    const locations = JSON.parse(localStorage.getItem('locations') || '[]');
+
+    setLocationData({
+      provinces,
+      districts,
+      districtWards,
+      locations
+    });
+  }, []);
 
   useEffect(() => {
     const fetchEmployee = async () => {
@@ -45,6 +66,13 @@ export default () => {
   const formatDate = (dateString) => {
     if (!dateString || dateString === 'string') return 'N/A';
     return new Date(dateString).toLocaleDateString();
+  };
+
+  const getLocationName = (id, type) => {
+    if (!id) return 'N/A';
+    const data = locationData[type] || [];
+    const item = data.find(item => item.id === id);
+    return item ? item.name : 'N/A';
   };
 
   if (error) {
@@ -170,7 +198,11 @@ export default () => {
               <Row>
                 <Col md={6} className="mb-3">
                   <h6>Current Address</h6>
-                  <p>{employee.currentAddress}</p>
+                  <p>
+                    {employee.street}, {getLocationName(employee.districWard, 'districtWards')}, {' '}
+                    {getLocationName(employee.district, 'districts')}, {' '}
+                    {getLocationName(employee.province, 'provinces')}
+                  </p>
                 </Col>
                 <Col md={6} className="mb-3">
                   <h6>Permanent Address</h6>

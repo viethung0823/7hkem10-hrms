@@ -8,30 +8,92 @@ import { Routes } from "../routes";
 
 export default () => {
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
+    id: 9007199254740991,
     name: '',
-    role: 10001 // Default role ID for User
+    code: '',
+    workPhone: '',
+    gender: 'MALE',
+    dateJoin: '',
+    dateLeft: '',
+    country: '',
+    idNumber: '',
+    idDate: '',
+    idAddress: '',
+    birthday: '',
+    placeOfBirth: '',
+    permanentAddress: '',
+    street: '',
+    province: '',
+    district: '',
+    ward: '',
+    passport: '',
+    maritalStatus: {},
+    emergencyContact: '',
+    emergencyPhone: '',
+    socialInsuranceCode: '',
+    taxCode: '',
+    religion: '',
+    company: 9007199254740991,
+    department: 9007199254740991,
+    jobPosition: 9007199254740991,
+    jobTitle: 9007199254740991,
+    user: 9007199254740991,
+    manager: 9007199254740991,
+    isUnion: false
   });
-  const [roles, setRoles] = useState([]);
+
+  const [locationData, setLocationData] = useState({
+    provinces: [],
+    districts: [],
+    districtWards: [],
+    locations: []
+  });
+
+  const [companies, setCompanies] = useState([]);
+  const [departments, setDepartments] = useState([]);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
-    const fetchRoles = async () => {
+    // Load location data from localStorage
+    const provinces = JSON.parse(localStorage.getItem('provinces') || '[]');
+    const districts = JSON.parse(localStorage.getItem('districts') || '[]');
+    const districtWards = JSON.parse(localStorage.getItem('districtWards') || '[]');
+    const locations = JSON.parse(localStorage.getItem('locations') || '[]');
+
+    console.log('Loaded location data:', { provinces, districts, districtWards }); // Debug log
+
+    setLocationData({
+      provinces,
+      districts,
+      districtWards,
+      locations
+    });
+
+    // Fetch companies and departments
+    const fetchData = async () => {
       try {
-        const rolesData = await apiService.getUserRoles();
-        setRoles(rolesData);
+        const [companiesData, departmentsData] = await Promise.all([
+          apiService.getCompanies(),
+          apiService.getDepartments()
+        ]);
+        setCompanies(companiesData);
+        setDepartments(departmentsData);
       } catch (error) {
-        setError('Failed to fetch roles');
-        console.error('Error fetching roles:', error);
+        console.error('Error fetching data:', error);
+        setError('Failed to load data');
       }
     };
 
-    fetchRoles();
+    fetchData();
   }, []);
+
+  // Add debug log for form data changes
+  useEffect(() => {
+    console.log('Current form data:', formData);
+  }, [formData]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,29 +104,28 @@ export default () => {
     try {
       await apiService.createEmployee(formData);
       setSuccess('Employee created successfully!');
-      // Clear form
-      setFormData({
-        username: '',
-        password: '',
-        name: '',
-        role: 10001
-      });
-      // Redirect to employee list after 2 seconds
       setTimeout(() => {
         history.push(Routes.Employee.path);
       }, 2000);
     } catch (error) {
-      setError(error.message || 'Failed to create employee');
+      console.error('Create employee error:', error);
+      if (error.response?.data) {
+        // Handle API error response
+        const errorData = error.response.data;
+        setError(errorData.message || 'Failed to create employee');
+      } else {
+        setError(error.message || 'Failed to create employee');
+      }
     } finally {
       setLoading(false);
     }
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: type === 'checkbox' ? checked : value
     }));
   };
 
@@ -89,63 +150,372 @@ export default () => {
               {success && <Alert variant="success">{success}</Alert>}
 
               <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Username</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    name="username"
-                    value={formData.username}
-                    onChange={handleChange}
-                    placeholder="Enter username"
-                  />
-                </Form.Group>
+                <h5 className="mb-4">Personal Information</h5>
+                <Row>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Name</Form.Label>
+                      <Form.Control
+                        required
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Enter full name"
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Code</Form.Label>
+                      <Form.Control
+                        required
+                        type="text"
+                        name="code"
+                        value={formData.code}
+                        onChange={handleChange}
+                        placeholder="Enter employee code"
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-                <Form.Group className="mb-3">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    required
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    placeholder="Enter password"
-                  />
-                </Form.Group>
+                <Row>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Phone</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="workPhone"
+                        value={formData.workPhone}
+                        onChange={handleChange}
+                        placeholder="Enter phone number"
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Gender</Form.Label>
+                      <Form.Select
+                        name="gender"
+                        value={formData.gender}
+                        onChange={handleChange}
+                      >
+                        <option value="MALE">Male</option>
+                        <option value="FEMALE">Female</option>
+                      </Form.Select>
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-                <Form.Group className="mb-3">
-                  <Form.Label>Full Name</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Enter full name"
-                  />
-                </Form.Group>
+                <Row>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Birthday</Form.Label>
+                      <Form.Control
+                        type="date"
+                        name="birthday"
+                        value={formData.birthday}
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Religion</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="religion"
+                        value={formData.religion}
+                        onChange={handleChange}
+                        placeholder="Enter religion"
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-                <Form.Group className="mb-3">
-                  <Form.Label>Role</Form.Label>
-                  <Form.Select
-                    name="role"
-                    value={formData.role}
-                    onChange={handleChange}
-                    disabled={loading || roles.length === 0}
-                  >
-                    {roles.map(role => (
-                      <option key={role.id} value={role.id}>
-                        {role.name}
-                      </option>
-                    ))}
-                  </Form.Select>
-                </Form.Group>
+                <h5 className="mb-4 mt-4">Employment Information</h5>
+                <Row>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Company</Form.Label>
+                      <Form.Select
+                        name="company"
+                        value={formData.company}
+                        onChange={handleChange}
+                        required
+                      >
+                        <option value="">Select Company</option>
+                        {companies.map(company => (
+                          <option key={company.id} value={company.id}>
+                            {company.name}
+                          </option>
+                        ))}
+                      </Form.Select>
+                    </Form.Group>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Department</Form.Label>
+                      <Form.Select
+                        name="department"
+                        value={formData.department}
+                        onChange={handleChange}
+                        required
+                      >
+                        <option value="">Select Department</option>
+                        {departments
+                          .filter(dept => {
+                            console.log('Department:', dept, 'Selected company:', formData.company);
+                            return !formData.company || parseInt(dept.company) === parseInt(formData.company);
+                          })
+                          .map(dept => (
+                            <option key={dept.id} value={dept.id}>
+                              {dept.name} ({dept.code})
+                            </option>
+                          ))}
+                      </Form.Select>
+                    </Form.Group>
+                  </Col>
+                </Row>
 
-                <div className="mt-3">
+                <Row>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Join Date</Form.Label>
+                      <Form.Control
+                        type="date"
+                        name="dateJoin"
+                        value={formData.dateJoin}
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Left Date</Form.Label>
+                      <Form.Control
+                        type="date"
+                        name="dateLeft"
+                        value={formData.dateLeft}
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col md={6} className="mb-3">
+                    <Form.Group className="d-flex align-items-center">
+                      <Form.Check
+                        type="checkbox"
+                        name="isUnion"
+                        checked={formData.isUnion}
+                        onChange={handleChange}
+                        label="Union Member"
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <h5 className="mb-4 mt-4">Contact Information</h5>
+                <Row>
+                  <Col md={12} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Street Address</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="street"
+                        value={formData.street}
+                        onChange={handleChange}
+                        placeholder="Enter street address"
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col md={4} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Province</Form.Label>
+                      <Form.Select
+                        name="province"
+                        value={formData.province}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select Province</option>
+                        {locationData.provinces.map(province => (
+                          <option key={province.id} value={province.id}>
+                            {province.name}
+                          </option>
+                        ))}
+                      </Form.Select>
+                    </Form.Group>
+                  </Col>
+                  <Col md={4} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>District</Form.Label>
+                      <Form.Select
+                        name="district"
+                        value={formData.district}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select District</option>
+                        {locationData.districts.map(district => (
+                          <option key={district.id} value={district.id}>
+                            {district.name}
+                          </option>
+                        ))}
+                      </Form.Select>
+                    </Form.Group>
+                  </Col>
+                  <Col md={4} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>District Ward</Form.Label>
+                      <Form.Select
+                        name="ward"
+                        value={formData.ward}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select District Ward</option>
+                        {locationData.districtWards.map(ward => (
+                          <option key={ward.id} value={ward.id}>
+                            {ward.name}
+                          </option>
+                        ))}
+                      </Form.Select>
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col md={12} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Permanent Address</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="permanentAddress"
+                        value={formData.permanentAddress}
+                        onChange={handleChange}
+                        placeholder="Enter permanent address"
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Emergency Contact</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="emergencyContact"
+                        value={formData.emergencyContact}
+                        onChange={handleChange}
+                        placeholder="Enter emergency contact name"
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Emergency Phone</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="emergencyPhone"
+                        value={formData.emergencyPhone}
+                        onChange={handleChange}
+                        placeholder="Enter emergency phone number"
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <h5 className="mb-4 mt-4">Identification Information</h5>
+                <Row>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>ID Number</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="idNumber"
+                        value={formData.idNumber}
+                        onChange={handleChange}
+                        placeholder="Enter ID number"
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>ID Date</Form.Label>
+                      <Form.Control
+                        type="date"
+                        name="idDate"
+                        value={formData.idDate}
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>ID Address</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="idAddress"
+                        value={formData.idAddress}
+                        onChange={handleChange}
+                        placeholder="Enter ID address"
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Passport</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="passport"
+                        value={formData.passport}
+                        onChange={handleChange}
+                        placeholder="Enter passport number"
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Social Insurance Code</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="socialInsuranceCode"
+                        value={formData.socialInsuranceCode}
+                        onChange={handleChange}
+                        placeholder="Enter social insurance code"
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={6} className="mb-3">
+                    <Form.Group>
+                      <Form.Label>Tax Code</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="taxCode"
+                        value={formData.taxCode}
+                        onChange={handleChange}
+                        placeholder="Enter tax code"
+                      />
+                    </Form.Group>
+                  </Col>
+                </Row>
+
+                <div className="mt-4">
                   <Button
                     variant="primary"
                     type="submit"
-                    disabled={loading || roles.length === 0}
+                    disabled={loading}
                   >
                     {loading ? 'Creating...' : 'Create Employee'}
                   </Button>
