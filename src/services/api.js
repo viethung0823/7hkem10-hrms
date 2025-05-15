@@ -101,6 +101,10 @@ const apiCall = async (endpoint, options = {}) => {
     console.error('API Error:', errorText);
     throw new Error(`API call failed: ${endpoint}`);
   }
+  // For DELETE requests or empty responses, return null instead of trying to parse JSON
+  if (options.method === 'DELETE' || response.status === 204) {
+    return null;
+  }
   return response.json();
 };
 
@@ -108,14 +112,7 @@ const apiCall = async (endpoint, options = {}) => {
 export const apiService = {
   // Get users
   getUsers: async () => {
-    try {
-      const response = await api.get('/api/resUsers');
-      // Map the API response with mock data
-      return mapEmployeeData(response.data);
-    } catch (error) {
-      console.error('Error fetching users:', error);
-      throw error;
-    }
+    return apiCall('/api/resUsers', getHeaders());
   },
 
   // GET request example
@@ -277,5 +274,32 @@ export const apiService = {
 
   async updateRole(roleId, roleData) {
     return apiCall(`/api/resUserRoles/${roleId}`, getHeaders('PUT', roleData));
+  },
+
+  // User APIs
+  async createUser(userData) {
+    const requestBody = {
+      id: 9007199254740991, // Using max safe integer as default
+      username: userData.username,
+      password: userData.password,
+      name: userData.name,
+      role: parseInt(userData.role)
+    };
+    return apiCall('/api/resUsers', getHeaders('POST', requestBody));
+  },
+
+  async updateUser(id, userData) {
+    const requestBody = {
+      id: parseInt(id),
+      username: userData.username,
+      password: userData.password || '', // Optional password field
+      name: userData.name,
+      role: parseInt(userData.role)
+    };
+    return apiCall(`/api/resUsers/${id}`, getHeaders('PUT', requestBody));
+  },
+
+  async deleteUser(id) {
+    return apiCall(`/api/resUsers/${id}`, getHeaders('DELETE'));
   },
 };

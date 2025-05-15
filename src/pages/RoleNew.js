@@ -8,7 +8,6 @@ import { Routes } from "../routes";
 
 export default () => {
   const [formData, setFormData] = useState({
-    id: '',
     name: ''
   });
   const [error, setError] = useState('');
@@ -27,12 +26,11 @@ export default () => {
       setSuccess('Role created successfully!');
       // Clear form
       setFormData({
-        id: '',
         name: ''
       });
       // Redirect to role list after 2 seconds
       setTimeout(() => {
-        history.push(Routes.Role.path);
+        history.push(Routes.UserRole.path);
       }, 2000);
     } catch (error) {
       setError(error.message || 'Failed to create role');
@@ -70,18 +68,6 @@ export default () => {
               {success && <Alert variant="success">{success}</Alert>}
 
               <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Role ID</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    name="id"
-                    value={formData.id}
-                    onChange={handleChange}
-                    placeholder="Enter role ID (e.g., 10003)"
-                  />
-                </Form.Group>
-
                 <Form.Group className="mb-3">
                   <Form.Label>Role Name</Form.Label>
                   <Form.Control

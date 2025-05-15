@@ -9,7 +9,6 @@ import { Routes } from "../routes";
 export default () => {
   const { id } = useParams();
   const [formData, setFormData] = useState({
-    id: '',
     name: ''
   });
   const [error, setError] = useState('');
@@ -32,7 +31,6 @@ export default () => {
         const role = roles.find(r => r.id === parseInt(id));
         if (role) {
           setFormData({
-            id: role.id.toString(),
             name: role.name
           });
         } else {
@@ -65,7 +63,7 @@ export default () => {
       await apiService.updateRole(id, formData);
       setSuccess('Role updated successfully!');
       setTimeout(() => {
-        history.push(Routes.Role.path);
+        history.push(Routes.UserRole.path);
       }, 2000);
     } catch (error) {
       setError(error.message || 'Failed to update role');
@@ -103,18 +101,6 @@ export default () => {
               {success && <Alert variant="success">{success}</Alert>}
 
               <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Role ID</Form.Label>
-                  <Form.Control
-                    required
-                    type="text"
-                    name="id"
-                    value={formData.id}
-                    onChange={handleChange}
-                    placeholder="Enter role ID"
-                  />
-                </Form.Group>
-
                 <Form.Group className="mb-3">
                   <Form.Label>Role Name</Form.Label>
                   <Form.Control

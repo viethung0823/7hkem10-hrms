@@ -61,13 +61,13 @@ export default (props) => {
     try {
       await apiService.deleteRole(roleToDelete.id);
       setSuccess('Role deleted successfully!');
+      setShowDeleteModal(false);
       // Refresh the roles list
       await fetchRoles();
     } catch (error) {
       setError(error.message || 'Failed to delete role');
     } finally {
       setLoading(false);
-      setShowDeleteModal(false);
       setRoleToDelete(null);
     }
   };
@@ -101,7 +101,7 @@ export default (props) => {
               <Button
                 variant="primary"
                 size="sm"
-                onClick={() => history.push(Routes.RoleNew.path)}
+                onClick={() => history.push(Routes.UserRoleNew.path)}
               >
                 <FontAwesomeIcon icon={faPlus} className="me-2" />
                 New Role
@@ -166,7 +166,7 @@ export default (props) => {
                   variant="primary"
                   size="sm"
                   className="me-2"
-                  onClick={() => history.push(`${Routes.RoleEdit.path.replace(':id', role.id)}`)}
+                  onClick={() => history.push(`${Routes.UserRoleEdit.path.replace(':id', role.id)}`)}
                 >
                   Edit
                 </Button>

@@ -18,6 +18,7 @@ import NotFoundPage from "./examples/NotFound";
 import ServerError from "./examples/ServerError";
 import EmployeeDetail from "./EmployeeDetail";
 import EmployeeNew from "./EmployeeNew";
+import EmployeeEdit from "./EmployeeEdit";
 import Role from "./Role";
 import RoleNew from "./RoleNew";
 import RoleEdit from "./RoleEdit";
@@ -32,6 +33,10 @@ import JobTitle from "./JobTitle";
 import JobTitleNew from "./JobTitleNew";
 import JobTitleDetail from "./JobTitleDetail";
 import JobTitleEdit from "./JobTitleEdit";
+import User from "./User";
+import UserNew from "./UserNew";
+import UserDetail from "./UserDetail";
+import UserEdit from "./UserEdit";
 
 // documentation pages
 import DocsOverview from "./documentation/DocsOverview";
@@ -130,11 +135,16 @@ export default () => (
     <RouteWithSidebar exact path={Routes.Employee.path} component={() => <Employee title="Employee Management" showSearch={true} showSettings={true} />} />
     <RouteWithSidebar exact path={Routes.EmployeeNew.path} component={EmployeeNew} />
     <RouteWithSidebar exact path={Routes.EmployeeDetail.path} component={EmployeeDetail} />
+    <RouteWithSidebar exact path={Routes.EmployeeEdit.path} component={EmployeeEdit} />
     <RouteWithSidebar exact path={Routes.Settings.path} component={Settings} />
     <RouteWithSidebar exact path={Routes.BootstrapTables.path} component={BootstrapTables} />
-    <RouteWithSidebar exact path={Routes.Role.path} component={() => <Role title="Role Management" showSearch={true} showSettings={true} />} />
-    <RouteWithSidebar exact path={Routes.RoleNew.path} component={RoleNew} />
-    <RouteWithSidebar exact path={Routes.RoleEdit.path} component={RoleEdit} />
+    <RouteWithSidebar exact path={Routes.User.path} component={() => <User title="User Management" showSearch={true} showSettings={true} />} />
+    <RouteWithSidebar exact path={Routes.UserNew.path} component={UserNew} />
+    <RouteWithSidebar exact path={Routes.UserDetail.path} component={UserDetail} />
+    <RouteWithSidebar exact path={Routes.UserEdit.path} component={UserEdit} />
+    <RouteWithSidebar exact path={Routes.UserRole.path} component={() => <Role title="Role Management" showSearch={true} showSettings={true} />} />
+    <RouteWithSidebar exact path={Routes.UserRoleNew.path} component={RoleNew} />
+    <RouteWithSidebar exact path={Routes.UserRoleEdit.path} component={RoleEdit} />
     <RouteWithSidebar exact path={Routes.ContractType.path} component={() => <ContractType title="Contract Type Management" showSearch={true} showSettings={true} />} />
     <RouteWithSidebar exact path={Routes.ContractTypeNew.path} component={ContractTypeNew} />
     <RouteWithSidebar exact path={Routes.ContractTypeEdit.path} component={ContractTypeEdit} />

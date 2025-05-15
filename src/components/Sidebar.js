@@ -127,15 +127,15 @@ export default (props = {}) => {
 
               {/* <NavItem title="Overview" link={Routes.DashboardOverview.path} icon={faChartPie} /> */}
               {/* <NavItem external title="Messages" link="https://demo.themesberg.com/volt-pro-react/#/messages" target="_blank" badgeText="Pro" icon={faInbox} /> */}
-              <CollapsableNavItem eventKey="tables/" title="User" icon={faTable}>
-                <NavItem title="View All User" link={Routes.Employee.path} />
-                <NavItem title="View All User Roles" link={Routes.Role.path} />
+              <CollapsableNavItem eventKey="users" title="User" icon={faTable}>
+                <NavItem title="View All Users" link={Routes.User.path} />
+                <NavItem title="View All User Roles" link={Routes.UserRole.path} />
               </CollapsableNavItem>
-              <CollapsableNavItem eventKey="tables/" title="Employee" icon={faTable}>
+              <CollapsableNavItem eventKey="employees" title="Employee" icon={faTable}>
                 <NavItem title="View All Employees" link={Routes.Employee.path} />
                 <NavItem title="View All Job Titles" link={Routes.JobTitle.path} />
               </CollapsableNavItem>
-              <CollapsableNavItem eventKey="tables/" title="Contract" icon={faTable}>
+              <CollapsableNavItem eventKey="contracts" title="Contract" icon={faTable}>
                 <NavItem title="View All Contracts" link={Routes.Contract.path} />
                 <NavItem title="Contract Types" link={Routes.ContractType.path} />
               </CollapsableNavItem>

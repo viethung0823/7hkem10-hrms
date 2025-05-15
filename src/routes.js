@@ -6,6 +6,7 @@ export const Routes = {
     Employee: { path: "/employee" },
     EmployeeNew: { path: "/employee/create" },
     EmployeeDetail: { path: "/employee/:id" },
+    EmployeeEdit: { path: "/employee/:id/edit" },
     Settings: { path: "/settings" },
     Upgrade: { path: "/upgrade" },
     BootstrapTables: { path: "/tables/bootstrap-tables" },
@@ -18,10 +19,26 @@ export const Routes = {
     Lock: { path: "/lock" },
     NotFound: { path: "/404" },
     ServerError: { path: "/500" },
-    Role: { path: "/role" },
-    RoleNew: { path: "/role/create" },
-    RoleEdit: { path: "/role/:id/edit" },
-    RoleDetail: { path: "/role/:id" },
+    User: {
+        path: "/users",
+        component: React.lazy(() => import("./pages/User"))
+    },
+    UserNew: {
+        path: "/users/new",
+        component: React.lazy(() => import("./pages/UserNew"))
+    },
+    UserDetail: {
+        path: "/users/:id",
+        component: React.lazy(() => import("./pages/UserDetail"))
+    },
+    UserEdit: {
+        path: "/users/:id/edit",
+        component: React.lazy(() => import("./pages/UserEdit"))
+    },
+    UserRole: { path: "/users-role" },
+    UserRoleNew: { path: "/users-role/create" },
+    UserRoleEdit: { path: "/users-role/:id/edit" },
+    UserRoleDetail: { path: "/users-role/:id" },
     ContractType: {
         path: "/contract-types",
         component: React.lazy(() => import("./pages/ContractType")),
