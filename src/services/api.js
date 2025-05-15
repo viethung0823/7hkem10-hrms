@@ -2,7 +2,7 @@ import axios from 'axios';
 import { employeeList } from "../data/mockData";
 
 // API URL configuration
-const API_URL = 'http://localhost:3000';
+const API_URL = 'https://33d2-52-77-212-138.ngrok-free.app';
 
 // Helper function to get token from localStorage
 const getToken = () => {
