@@ -1,16 +1,48 @@
-
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faEnvelope, faUnlockAlt } from "@fortawesome/free-solid-svg-icons";
 import { faFacebookF, faGithub, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { Col, Row, Form, Card, Button, FormCheck, Container, InputGroup } from '@themesberg/react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Col, Row, Form, Card, Button, FormCheck, Container, InputGroup, Alert } from '@themesberg/react-bootstrap';
+import { Link, useHistory } from 'react-router-dom';
+import { apiService } from "../../services/api";
 
 import { Routes } from "../../routes";
 import BgImage from "../../assets/img/illustrations/signin.svg";
 
-
 export default () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const history = useHistory();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+
+    try {
+      const token = await apiService.signIn(username, password);
+      console.log('Login response:', token); // Debug log
+
+      if (token) {
+        console.log('Token received:', token); // Debug log
+        // Store token and username in localStorage
+        localStorage.setItem('token', token);
+        localStorage.setItem('username', username);
+        // Redirect to dashboard after successful login
+        history.push(Routes.DashboardOverview.path);
+      } else {
+        setError('Invalid response from server');
+      }
+    } catch (error) {
+      console.error('Login error:', error); // Debug log
+      setError(error.message || 'Failed to sign in');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <main>
       <section className="d-flex align-items-center my-5 mt-lg-6 mb-lg-5">
@@ -26,14 +58,26 @@ export default () => {
                 <div className="text-center text-md-center mb-4 mt-md-0">
                   <h3 className="mb-0">Sign in to our platform</h3>
                 </div>
-                <Form className="mt-4">
-                  <Form.Group id="email" className="mb-4">
-                    <Form.Label>Your Email</Form.Label>
+                {error && (
+                  <Alert variant="danger" className="mt-3">
+                    {error}
+                  </Alert>
+                )}
+                <Form className="mt-4" onSubmit={handleSubmit}>
+                  <Form.Group id="username" className="mb-4">
+                    <Form.Label>Username</Form.Label>
                     <InputGroup>
                       <InputGroup.Text>
                         <FontAwesomeIcon icon={faEnvelope} />
                       </InputGroup.Text>
-                      <Form.Control autoFocus required type="email" placeholder="example@company.com" />
+                      <Form.Control
+                        autoFocus
+                        required
+                        type="text"
+                        placeholder="Enter your username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                      />
                     </InputGroup>
                   </Form.Group>
                   <Form.Group>
@@ -43,7 +87,13 @@ export default () => {
                         <InputGroup.Text>
                           <FontAwesomeIcon icon={faUnlockAlt} />
                         </InputGroup.Text>
-                        <Form.Control required type="password" placeholder="Password" />
+                        <Form.Control
+                          required
+                          type="password"
+                          placeholder="Password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
                       </InputGroup>
                     </Form.Group>
                     <div className="d-flex justify-content-between align-items-center mb-4">
@@ -54,8 +104,13 @@ export default () => {
                       <Card.Link className="small text-end">Lost password?</Card.Link>
                     </div>
                   </Form.Group>
-                  <Button variant="primary" type="submit" className="w-100">
-                    Sign in
+                  <Button
+                    variant="primary"
+                    type="submit"
+                    className="w-100"
+                    disabled={loading}
+                  >
+                    {loading ? 'Signing in...' : 'Sign in'}
                   </Button>
                 </Form>
 

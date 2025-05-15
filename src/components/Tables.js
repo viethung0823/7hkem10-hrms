@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faAngleUp, faArrowDown, faArrowUp, faEdit, faEllipsisH, faExternalLinkAlt, faEye, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { Col, Row, Nav, Card, Image, Button, Table, Dropdown, ProgressBar, Pagination, ButtonGroup } from '@themesberg/react-bootstrap';
@@ -8,6 +8,7 @@ import { Routes } from "../routes";
 import { pageVisits, pageTraffic, pageRanking } from "../data/tables";
 import transactions from "../data/transactions";
 import commands from "../data/commands";
+import { apiService } from "../services/api";
 
 const ValueChange = ({ value, suffix }) => {
   const valueIcon = value < 0 ? faAngleDown : faAngleUp;
@@ -303,12 +304,13 @@ export const EmployeeTable = ({ employeeList }) => {
   };
 
   const TableRow = (props) => {
-    const { id, name, workPhone, dateJoin, dateLeft, birthday, currentAddress } = props;
+    const { id, name, username, workPhone, dateJoin, dateLeft, birthday, currentAddress, role } = props;
 
     return (
       <tr onClick={() => handleRowClick(id)} style={{ cursor: "pointer" }}>
         <td>{id}</td>
-        <td>{name}</td>
+        <td>{username}</td>
+        <td>{role?.name || 'N/A'}</td>
         <td>{workPhone}</td>
         <td>{dateJoin}</td>
         <td>{dateLeft || 'N/A'}</td>
@@ -325,7 +327,8 @@ export const EmployeeTable = ({ employeeList }) => {
           <thead>
             <tr>
               <th className="border-bottom">ID</th>
-              <th className="border-bottom">Name</th>
+              <th className="border-bottom">Username</th>
+              <th className="border-bottom">Role</th>
               <th className="border-bottom">Work Phone</th>
               <th className="border-bottom">Date Joined</th>
               <th className="border-bottom">Date Left</th>

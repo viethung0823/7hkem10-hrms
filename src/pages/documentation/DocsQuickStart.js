@@ -12,14 +12,14 @@ export default () => (
           <Card.Body>
             <article>
               <h1 className="h2" id="quick-start">Quick Start </h1>
-              <p className="fs-5 fw-light">This guide will help you get started with Volt React Dashboard</p>
+              <p className="fs-5 fw-light">This guide will help you get started with PTIT Project</p>
 
               <p>
-                <b>Volt React Dashboard</b> is built on top of <Card.Link href="https://react-bootstrap.github.io/" target="_blank">React Bootstrap</Card.Link> using <a href="https://github.com/facebook/create-react-app/" target="_blank" rel="noopener noreferrer">Create React App</a>.
+                <b>PTIT Project</b> is built on top of <Card.Link href="https://react-bootstrap.github.io/" target="_blank">React Bootstrap</Card.Link> using <a href="https://github.com/facebook/create-react-app/" target="_blank" rel="noopener noreferrer">Create React App</a>.
               </p>
-              
+
               <p>Please follow these steps to install the required technologies:</p>
-              
+
               <h2 className="fs-5 mt-4" id="using-yarn">Using <code>yarn</code></h2>
               <ol className="ps-4 docs-list">
                 <li>

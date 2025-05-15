@@ -1,24 +1,37 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faCog, faEnvelopeOpen, faSearch, faSignOutAlt, faUserShield } from "@fortawesome/free-solid-svg-icons";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import { Row, Col, Nav, Form, Image, Navbar, Dropdown, Container, ListGroup, InputGroup } from '@themesberg/react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import { apiService } from "../services/api";
 
 import NOTIFICATIONS_DATA from "../data/notifications";
 import Profile3 from "../assets/img/team/profile-picture-3.jpg";
 
-
 export default (props) => {
   const [notifications, setNotifications] = useState(NOTIFICATIONS_DATA);
+  const [username, setUsername] = useState('');
+  const history = useHistory();
   const areNotificationsRead = notifications.reduce((acc, notif) => acc && notif.read, true);
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem('username');
+    if (storedUsername) {
+      setUsername(storedUsername);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    apiService.logout();
+    history.push('/sign-in'); // Redirect to sign-in page
+  };
 
   const markNotificationsAsRead = () => {
     setTimeout(() => {
       setNotifications(notifications.map(n => ({ ...n, read: true })));
     }, 300);
   };
-
 
   const Notification = (props) => {
     const { link, sender, image, time, message, read = false } = props;
@@ -88,7 +101,7 @@ export default (props) => {
                 <div className="media d-flex align-items-center">
                   <Image src={Profile3} className="user-avatar md-avatar rounded-circle" />
                   <div className="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                    <span className="mb-0 font-small fw-bold">Bonnie Green</span>
+                    <span className="mb-0 font-small fw-bold">{username || 'Guest'}</span>
                   </div>
                 </div>
               </Dropdown.Toggle>
@@ -108,7 +121,7 @@ export default (props) => {
 
                 <Dropdown.Divider />
 
-                <Dropdown.Item className="fw-bold">
+                <Dropdown.Item className="fw-bold" onClick={handleLogout}>
                   <FontAwesomeIcon icon={faSignOutAlt} className="text-danger me-2" /> Logout
                 </Dropdown.Item>
               </Dropdown.Menu>

@@ -12,7 +12,7 @@ import { Routes } from "../routes";
 import ThemesbergLogoIcon from "../assets/img/themesberg.svg";
 import ThemesbergLogo from "../assets/img/themesberg-logo.svg";
 import MockupPresentation from "../assets/img/mockup-presentation.png";
-import ReactHero from "../assets/img/technologies/react-hero-logo.svg";
+import ReactHero from "../assets/img/technologies/PTIT.png";
 import MapboxImg from "../assets/img/mockup-map-presentation.png";
 import CalendarImg from "../assets/img/mockup-calendar-presentation.png";
 import ReactMockupImg from "../assets/img/react-mockup.png";
@@ -105,7 +105,7 @@ export default () => {
           <Row>
             <Col xs={12} className="text-center">
               <div className="react-big-icon d-none d-lg-block"><span className="fab fa-react"></span></div>
-              <h1 className="fw-bolder text-secondary">Volt React Dashboard</h1>
+              <h1 className="fw-bolder text-secondary">PTIT Project</h1>
               <p className="text-muted fw-light mb-5 h5">Open source powered by React.js and Bootstrap 5</p>
               <div className="d-flex align-items-center justify-content-center">
                 <Button variant="secondary" as={Link} to={Routes.DashboardOverview.path} className="text-dark me-3">
@@ -370,7 +370,7 @@ export default () => {
           <Row>
             <Col xs={12} lg={8}>
               <h2 className="fw-light mb-3">Download or upgrade to pro</h2>
-              <p className="lead mb-4 me-lg-6">Do you want to take React development to the next level? Check out the premium version of Volt React Dashboard in the following comparison table.</p>
+              <p className="lead mb-4 me-lg-6">Do you want to take React development to the next level? Check out the premium version of PTIT Project in the following comparison table.</p>
             </Col>
             <Col xs={12} lg={4}>
               <div className="github-big-icon">

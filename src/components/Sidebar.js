@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SimpleBar from 'simplebar-react';
 import { useLocation } from "react-router-dom";
 import { CSSTransition } from 'react-transition-group';
@@ -10,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 import { Routes } from "../routes";
 import ThemesbergLogo from "../assets/img/themesberg.svg";
-import ReactHero from "../assets/img/technologies/react-hero-logo.svg";
+import ReactHero from "../assets/img/technologies/PTIT.png";
 import ProfilePicture from "../assets/img/team/profile-picture-3.jpg";
 
 export default (props = {}) => {
@@ -21,14 +20,41 @@ export default (props = {}) => {
 
   const onCollapse = () => setShow(!show);
 
+  // Get initial active keys from localStorage or default to empty array
+  const getInitialActiveKeys = () => {
+    const savedKeys = localStorage.getItem('activeSidebarKeys');
+    return savedKeys ? JSON.parse(savedKeys) : [];
+  };
+
+  const [activeKeys, setActiveKeys] = useState(getInitialActiveKeys());
+
+  // Save active keys to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('activeSidebarKeys', JSON.stringify(activeKeys));
+  }, [activeKeys]);
+
   const CollapsableNavItem = (props) => {
     const { eventKey, title, icon, children = null } = props;
     const defaultKey = pathname.indexOf(eventKey) !== -1 ? eventKey : "";
 
+    const handleToggle = (key) => {
+      setActiveKeys(prev => {
+        if (prev.includes(key)) {
+          return prev.filter(k => k !== key);
+        } else {
+          return [...prev, key];
+        }
+      });
+    };
+
     return (
-      <Accordion as={Nav.Item} defaultActiveKey={defaultKey}>
+      <Accordion as={Nav.Item} defaultActiveKey={defaultKey} activeKey={activeKeys.includes(eventKey) ? eventKey : null}>
         <Accordion.Item eventKey={eventKey}>
-          <Accordion.Button as={Nav.Link} className="d-flex justify-content-between align-items-center">
+          <Accordion.Button
+            as={Nav.Link}
+            className="d-flex justify-content-between align-items-center"
+            onClick={() => handleToggle(eventKey)}
+          >
             <span>
               <span className="sidebar-icon"><FontAwesomeIcon icon={icon} /> </span>
               <span className="sidebar-text">{title}</span>
@@ -97,15 +123,21 @@ export default (props = {}) => {
               </Nav.Link>
             </div>
             <Nav className="flex-column pt-3 pt-md-0">
-              <NavItem title="Manage Employees" link={Routes.DashboardOverview.path} image={ReactHero} />
+              <NavItem title="Home" link={Routes.DashboardOverview.path} image={ReactHero} />
 
               {/* <NavItem title="Overview" link={Routes.DashboardOverview.path} icon={faChartPie} /> */}
               {/* <NavItem external title="Messages" link="https://demo.themesberg.com/volt-pro-react/#/messages" target="_blank" badgeText="Pro" icon={faInbox} /> */}
+              <CollapsableNavItem eventKey="tables/" title="User" icon={faTable}>
+                <NavItem title="View All User" link={Routes.Employee.path} />
+                <NavItem title="View All User Roles" link={Routes.Role.path} />
+              </CollapsableNavItem>
               <CollapsableNavItem eventKey="tables/" title="Employee" icon={faTable}>
                 <NavItem title="View All Employees" link={Routes.Employee.path} />
+                <NavItem title="View All Job Titles" link={Routes.JobTitle.path} />
               </CollapsableNavItem>
               <CollapsableNavItem eventKey="tables/" title="Contract" icon={faTable}>
-                <NavItem title="View All Contract" link={Routes.Employee.path} />
+                <NavItem title="View All Contracts" link={Routes.Contract.path} />
+                <NavItem title="Contract Types" link={Routes.ContractType.path} />
               </CollapsableNavItem>
               {/* <NavItem external title="Calendar" link="https://demo.themesberg.com/volt-pro-react/#/calendar" target="_blank" badgeText="Pro" icon={faCalendarAlt} /> */}
               {/* <NavItem external title="Map" link="https://demo.themesberg.com/volt-pro-react/#/map" target="_blank" badgeText="Pro" icon={faMapPin} /> */}

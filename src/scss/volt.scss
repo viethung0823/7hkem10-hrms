@@ -1,5 +1,5 @@
 // =========================================================
-// * Volt React Dashboard
+// * PTIT Project
 // =========================================================
 
 // * Product Page: https://themesberg.com/product/dashboard/volt-react

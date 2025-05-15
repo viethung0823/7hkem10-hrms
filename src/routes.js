@@ -1,20 +1,71 @@
+import React from 'react';
+
 export const Routes = {
     // pages
     DashboardOverview: { path: "/dashboard/overview" },
     Employee: { path: "/employee" },
+    EmployeeNew: { path: "/employee/create" },
     EmployeeDetail: { path: "/employee/:id" },
     Settings: { path: "/settings" },
     Upgrade: { path: "/upgrade" },
     BootstrapTables: { path: "/tables/bootstrap-tables" },
-    Billing: { path: "/examples/billing" },
-    Invoice: { path: "/examples/invoice" },
-    Signin: { path: "/examples/sign-in" },
-    Signup: { path: "/examples/sign-up" },
-    ForgotPassword: { path: "/examples/forgot-password" },
-    ResetPassword: { path: "/examples/reset-password" },
-    Lock: { path: "/examples/lock" },
-    NotFound: { path: "/examples/404" },
-    ServerError: { path: "/examples/500" },
+    Billing: { path: "/billing" },
+    Invoice: { path: "/invoice" },
+    Signin: { path: "/sign-in" },
+    Signup: { path: "/sign-up" },
+    ForgotPassword: { path: "/forgot-password" },
+    ResetPassword: { path: "/reset-password" },
+    Lock: { path: "/lock" },
+    NotFound: { path: "/404" },
+    ServerError: { path: "/500" },
+    Role: { path: "/role" },
+    RoleNew: { path: "/role/create" },
+    RoleEdit: { path: "/role/:id/edit" },
+    RoleDetail: { path: "/role/:id" },
+    ContractType: {
+        path: "/contract-types",
+        component: React.lazy(() => import("./pages/ContractType")),
+    },
+    ContractTypeNew: {
+        path: "/contract-types/new",
+        component: React.lazy(() => import("./pages/ContractTypeNew")),
+    },
+    ContractTypeEdit: {
+        path: "/contract-types/:id/edit",
+        component: React.lazy(() => import("./pages/ContractTypeEdit")),
+    },
+    Contract: {
+        path: "/contracts",
+        component: React.lazy(() => import("./pages/Contract")),
+    },
+    ContractNew: {
+        path: "/contracts/new",
+        component: React.lazy(() => import("./pages/ContractNew")),
+    },
+    ContractDetail: {
+        path: "/contracts/:id",
+        component: React.lazy(() => import("./pages/ContractDetail")),
+    },
+    ContractEdit: {
+        path: "/contracts/:id/edit",
+        component: React.lazy(() => import("./pages/ContractEdit")),
+    },
+    JobTitle: {
+        path: "/job-titles",
+        component: React.lazy(() => import("./pages/JobTitle")),
+    },
+    JobTitleNew: {
+        path: "/job-titles/new",
+        component: React.lazy(() => import("./pages/JobTitleNew")),
+    },
+    JobTitleDetail: {
+        path: "/job-titles/:id",
+        component: React.lazy(() => import("./pages/JobTitleDetail")),
+    },
+    JobTitleEdit: {
+        path: "/job-titles/:id/edit",
+        component: React.lazy(() => import("./pages/JobTitleEdit")),
+    },
 
     // docs
     DocsOverview: { path: "/documentation/overview" },

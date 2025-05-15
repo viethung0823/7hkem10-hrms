@@ -1,14 +1,53 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheck, faCog, faHome, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Col, Row, Form, Button, ButtonGroup, Breadcrumb, InputGroup, Dropdown } from '@themesberg/react-bootstrap';
+import { faHome, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Col, Row, Button, Card, Table, Form, Alert, Breadcrumb } from '@themesberg/react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import { apiService } from "../services/api";
+import { Routes } from "../routes";
 
-import { EmployeeTable } from "../components/Tables";
-import { employeeList } from "../data/mockData";
+export default () => {
+  const [employees, setEmployees] = useState([]);
+  const [filteredEmployees, setFilteredEmployees] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [error, setError] = useState('');
+  const history = useHistory();
 
-export default (props) => {
-  // Destructure props
-  const { title = "All Employees", showSearch = true, showSettings = true } = props;
+  useEffect(() => {
+    const fetchEmployees = async () => {
+      try {
+        const data = await apiService.getEmployees();
+        setEmployees(data);
+        setFilteredEmployees(data);
+      } catch (error) {
+        setError('Failed to fetch employees');
+        console.error('Error fetching employees:', error);
+      }
+    };
+
+    fetchEmployees();
+  }, []);
+
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+
+    if (value) {
+      const filtered = employees.filter(employee =>
+        employee.name.toLowerCase().includes(value.toLowerCase()) ||
+        employee.code.toLowerCase().includes(value.toLowerCase()) ||
+        employee.email.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredEmployees(filtered);
+    } else {
+      setFilteredEmployees(employees);
+    }
+  };
+
+  const formatDate = (dateString) => {
+    if (!dateString || dateString === 'string') return 'N/A';
+    return new Date(dateString).toLocaleDateString();
+  };
 
   return (
     <>
@@ -16,54 +55,77 @@ export default (props) => {
         <div className="d-block mb-4 mb-md-0">
           <Breadcrumb className="d-none d-md-inline-block" listProps={{ className: "breadcrumb-dark breadcrumb-transparent" }}>
             <Breadcrumb.Item><FontAwesomeIcon icon={faHome} /></Breadcrumb.Item>
-            <Breadcrumb.Item active>Employees</Breadcrumb.Item>
+            <Breadcrumb.Item>Employees</Breadcrumb.Item>
+            <Breadcrumb.Item active>View All Employees</Breadcrumb.Item>
           </Breadcrumb>
-          <h4>{title}</h4>
-          {/* <p className="mb-0">Your web analytics dashboard template.</p> */}
+          <h4>Employees</h4>
         </div>
         <div className="btn-toolbar mb-2 mb-md-0">
-          {showSettings && (
-            <ButtonGroup>
-              <Button variant="outline-primary" size="sm">Share</Button>
-              <Button variant="outline-primary" size="sm">Export</Button>
-            </ButtonGroup>
-          )}
+          <Button
+            variant="primary"
+            size="sm"
+            className="me-2"
+            onClick={() => history.push(Routes.EmployeeNew.path)}
+          >
+            <FontAwesomeIcon icon={faPlus} className="me-2" />
+            New Employee
+          </Button>
         </div>
       </div>
 
-      {showSearch && (
-        <div className="table-settings mb-4">
-          <Row className="justify-content-between align-items-center">
-            <Col xs={8} md={6} lg={3} xl={4}>
-              <InputGroup>
-                <InputGroup.Text>
-                  <FontAwesomeIcon icon={faSearch} />
-                </InputGroup.Text>
-                <Form.Control type="text" placeholder="Search" />
-              </InputGroup>
-            </Col>
-            <Col xs={4} md={2} xl={1} className="ps-md-0 text-end">
-              <Dropdown as={ButtonGroup}>
-                <Dropdown.Toggle split as={Button} variant="link" className="text-dark m-0 p-0">
-                  <span className="icon icon-sm icon-gray">
-                    <FontAwesomeIcon icon={faCog} />
-                  </span>
-                </Dropdown.Toggle>
-                <Dropdown.Menu className="dropdown-menu-xs dropdown-menu-right">
-                  <Dropdown.Item className="fw-bold text-dark">Show</Dropdown.Item>
-                  <Dropdown.Item className="d-flex fw-bold">
-                    10 <span className="icon icon-small ms-auto"><FontAwesomeIcon icon={faCheck} /></span>
-                  </Dropdown.Item>
-                  <Dropdown.Item className="fw-bold">20</Dropdown.Item>
-                  <Dropdown.Item className="fw-bold">30</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Col>
-          </Row>
-        </div>
-      )}
+      {error && <Alert variant="danger">{error}</Alert>}
 
-      <EmployeeTable employeeList={employeeList} />
+      <Card border="light" className="table-wrapper table-responsive shadow-sm">
+        <Card.Body className="pt-0">
+          <Form.Group className="mb-3">
+            <Form.Control
+              type="text"
+              placeholder="Search by name, code, or email..."
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+          </Form.Group>
+
+          <Table hover className="user-table align-items-center">
+            <thead>
+              <tr>
+                <th className="border-bottom">ID</th>
+                <th className="border-bottom">Name</th>
+                <th className="border-bottom">Code</th>
+                <th className="border-bottom">Email</th>
+                <th className="border-bottom">Phone</th>
+                <th className="border-bottom">Gender</th>
+                <th className="border-bottom">Join Date</th>
+                <th className="border-bottom">Status</th>
+                <th className="border-bottom">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredEmployees.map(employee => (
+                <tr key={employee.id}>
+                  <td>{employee.id}</td>
+                  <td>{employee.name}</td>
+                  <td>{employee.code}</td>
+                  <td>{employee.email}</td>
+                  <td>{employee.workPhone}</td>
+                  <td>{employee.gender}</td>
+                  <td>{formatDate(employee.dateJoin)}</td>
+                  <td>{employee.status || 'Active'}</td>
+                  <td>
+                    <Button
+                      variant="primary"
+                      size="sm"
+                      onClick={() => history.push(`${Routes.EmployeeDetail.path.replace(':id', employee.id)}`)}
+                    >
+                      View Details
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </Card.Body>
+      </Card>
     </>
   );
 };

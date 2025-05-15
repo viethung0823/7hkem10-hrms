@@ -17,6 +17,21 @@ import Lock from "./examples/Lock";
 import NotFoundPage from "./examples/NotFound";
 import ServerError from "./examples/ServerError";
 import EmployeeDetail from "./EmployeeDetail";
+import EmployeeNew from "./EmployeeNew";
+import Role from "./Role";
+import RoleNew from "./RoleNew";
+import RoleEdit from "./RoleEdit";
+import ContractType from "./ContractType";
+import ContractTypeNew from "./ContractTypeNew";
+import ContractTypeEdit from "./ContractTypeEdit";
+import Contract from "./Contract";
+import ContractNew from "./ContractNew";
+import ContractDetail from "./ContractDetail";
+import ContractEdit from "./ContractEdit";
+import JobTitle from "./JobTitle";
+import JobTitleNew from "./JobTitleNew";
+import JobTitleDetail from "./JobTitleDetail";
+import JobTitleEdit from "./JobTitleEdit";
 
 // documentation pages
 import DocsOverview from "./documentation/DocsOverview";
@@ -113,9 +128,24 @@ export default () => (
     <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} />
     <RouteWithSidebar exact path={Routes.Upgrade.path} component={Upgrade} />
     <RouteWithSidebar exact path={Routes.Employee.path} component={() => <Employee title="Employee Management" showSearch={true} showSettings={true} />} />
+    <RouteWithSidebar exact path={Routes.EmployeeNew.path} component={EmployeeNew} />
     <RouteWithSidebar exact path={Routes.EmployeeDetail.path} component={EmployeeDetail} />
     <RouteWithSidebar exact path={Routes.Settings.path} component={Settings} />
     <RouteWithSidebar exact path={Routes.BootstrapTables.path} component={BootstrapTables} />
+    <RouteWithSidebar exact path={Routes.Role.path} component={() => <Role title="Role Management" showSearch={true} showSettings={true} />} />
+    <RouteWithSidebar exact path={Routes.RoleNew.path} component={RoleNew} />
+    <RouteWithSidebar exact path={Routes.RoleEdit.path} component={RoleEdit} />
+    <RouteWithSidebar exact path={Routes.ContractType.path} component={() => <ContractType title="Contract Type Management" showSearch={true} showSettings={true} />} />
+    <RouteWithSidebar exact path={Routes.ContractTypeNew.path} component={ContractTypeNew} />
+    <RouteWithSidebar exact path={Routes.ContractTypeEdit.path} component={ContractTypeEdit} />
+    <RouteWithSidebar exact path={Routes.Contract.path} component={() => <Contract title="Contract Management" showSearch={true} showSettings={true} />} />
+    <RouteWithSidebar exact path={Routes.ContractNew.path} component={ContractNew} />
+    <RouteWithSidebar exact path={Routes.ContractDetail.path} component={ContractDetail} />
+    <RouteWithSidebar exact path={Routes.ContractEdit.path} component={ContractEdit} />
+    <RouteWithSidebar exact path={Routes.JobTitle.path} component={() => <JobTitle title="Job Title Management" showSearch={true} showSettings={true} />} />
+    <RouteWithSidebar exact path={Routes.JobTitleNew.path} component={JobTitleNew} />
+    <RouteWithSidebar exact path={Routes.JobTitleDetail.path} component={JobTitleDetail} />
+    <RouteWithSidebar exact path={Routes.JobTitleEdit.path} component={JobTitleEdit} />
 
     {/* components */}
     <RouteWithSidebar exact path={Routes.Accordions.path} component={Accordion} />
