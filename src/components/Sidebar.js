@@ -71,9 +71,9 @@ export default (props = {}) => {
   };
 
   const NavItem = (props) => {
-    const { title, link, external, target, icon, image, badgeText, badgeBg = "secondary", badgeColor = "primary" } = props;
+    const { title, link, external, target, icon, image, badgeText, badgeBg = "secondary", badgeColor = "primary", isHome = false } = props;
     const classNames = badgeText ? "d-flex justify-content-start align-items-center justify-content-between" : "";
-    const navItemClassName = link === pathname ? "active" : "";
+    const navItemClassName = link === pathname && !isHome ? "active" : "";
     const linkProps = external ? { href: link } : { as: Link, to: link };
 
     return (
@@ -96,7 +96,7 @@ export default (props = {}) => {
   return (
     <>
       <Navbar expand={false} collapseOnSelect variant="dark" className="navbar-theme-primary px-4 d-md-none">
-        <Navbar.Brand className="me-lg-5" as={Link} to={Routes.DashboardOverview.path}>
+        <Navbar.Brand className="me-lg-5" as={Link} to={Routes.User.path}>
           <Image src={ReactHero} className="navbar-brand-light" />
         </Navbar.Brand>
         <Navbar.Toggle as={Button} aria-controls="main-navbar" onClick={onCollapse}>
@@ -123,9 +123,9 @@ export default (props = {}) => {
               </Nav.Link>
             </div>
             <Nav className="flex-column pt-3 pt-md-0">
-              <NavItem title="Home" link={Routes.DashboardOverview.path} image={ReactHero} />
+              <NavItem title="Home" isHome link={Routes.User.path} image={ReactHero} />
 
-              {/* <NavItem title="Overview" link={Routes.DashboardOverview.path} icon={faChartPie} /> */}
+              {/* <NavItem title="Overview" link={Routes.User.path} icon={faChartPie} /> */}
               {/* <NavItem external title="Messages" link="https://demo.themesberg.com/volt-pro-react/#/messages" target="_blank" badgeText="Pro" icon={faInbox} /> */}
               <CollapsableNavItem eventKey="users" title="User" icon={faTable}>
                 <NavItem title="View All Users" link={Routes.User.path} />

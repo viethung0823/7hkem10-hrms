@@ -2,7 +2,7 @@ import React from 'react';
 
 export const Routes = {
     // pages
-    DashboardOverview: { path: "/dashboard/overview" },
+    User: { path: "/dashboard/overview" },
     Employee: { path: "/employee" },
     EmployeeNew: { path: "/employee/create" },
     EmployeeDetail: { path: "/employee/:id" },

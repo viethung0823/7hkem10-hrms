@@ -5,7 +5,6 @@ import { Routes } from "../routes";
 // pages
 import Presentation from "./Presentation";
 import Upgrade from "./Upgrade";
-import DashboardOverview from "./dashboard/DashboardOverview";
 import Employee from "./Employee";
 import Settings from "./Settings";
 import BootstrapTables from "./tables/BootstrapTables";
@@ -130,7 +129,6 @@ export default () => (
     <RouteWithLoader exact path={Routes.ServerError.path} component={ServerError} />
 
     {/* pages */}
-    <RouteWithSidebar exact path={Routes.DashboardOverview.path} component={DashboardOverview} />
     <RouteWithSidebar exact path={Routes.Upgrade.path} component={Upgrade} />
     <RouteWithSidebar exact path={Routes.Employee.path} component={() => <Employee title="Employee Management" showSearch={true} showSettings={true} />} />
     <RouteWithSidebar exact path={Routes.EmployeeNew.path} component={EmployeeNew} />
