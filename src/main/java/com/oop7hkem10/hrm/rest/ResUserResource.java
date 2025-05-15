@@ -1,6 +1,7 @@
 package com.oop7hkem10.hrm.rest;
 
 import com.oop7hkem10.hrm.model.ResUserDTO;
+import com.oop7hkem10.hrm.model.ResUserResponseDTO;
 import com.oop7hkem10.hrm.service.ResUserService;
 import com.oop7hkem10.hrm.util.ReferencedException;
 import com.oop7hkem10.hrm.util.ReferencedWarning;
@@ -31,12 +32,12 @@ public class ResUserResource {
     }
 
     @GetMapping
-    public ResponseEntity<List<ResUserDTO>> getAllResUsers() {
+    public ResponseEntity<List<ResUserResponseDTO>> getAllResUsers() {
         return ResponseEntity.ok(resUserService.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ResUserDTO> getResUser(@PathVariable(name = "id") final Long id) {
+    public ResponseEntity<ResUserResponseDTO> getResUser(@PathVariable(name = "id") final Long id) {
         return ResponseEntity.ok(resUserService.get(id));
     }
 
