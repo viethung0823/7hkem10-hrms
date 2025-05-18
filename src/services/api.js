@@ -159,6 +159,22 @@ export const apiService = {
     return apiCall('/api/resCompanies', getHeaders());
   },
 
+  async getCompany(id) {
+    return apiCall(`/api/resCompanies/${id}`, getHeaders());
+  },
+
+  async createCompany(data) {
+    return apiCall('/api/resCompanies', getHeaders('POST', data));
+  },
+
+  async updateCompany(id, data) {
+    return apiCall(`/api/resCompanies/${id}`, getHeaders('PUT', data));
+  },
+
+  async deleteCompany(id) {
+    return apiCall(`/api/resCompanies/${id}`, getHeaders('DELETE'));
+  },
+
   // Department APIs
   async getDepartments() {
     return apiCall('/api/hrDepartments', getHeaders());

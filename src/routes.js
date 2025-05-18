@@ -116,6 +116,10 @@ export const Routes = {
         path: "/departments/:id",
         component: React.lazy(() => import("./pages/DepartmentDetail")),
     },
+    Company: { path: "/companies" },
+    CompanyNew: { path: "/companies/new" },
+    CompanyDetail: { path: "/companies/:id" },
+    CompanyEdit: { path: "/companies/:id/edit" },
 
     // docs
     DocsOverview: { path: "/documentation/overview" },

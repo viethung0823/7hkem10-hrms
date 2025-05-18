@@ -44,6 +44,10 @@ import User from "./User";
 import UserNew from "./UserNew";
 import UserDetail from "./UserDetail";
 import UserEdit from "./UserEdit";
+import Company from "./Company";
+import CompanyNew from "./CompanyNew";
+import CompanyDetail from "./CompanyDetail";
+import CompanyEdit from "./CompanyEdit";
 
 // documentation pages
 import DocsOverview from "./documentation/DocsOverview";
@@ -128,6 +132,7 @@ const RouteWithSidebar = ({ component: Component, ...rest }) => {
 
 export default () => (
   <Switch>
+    <Redirect exact from="/" to={Routes.Signin.path} />
     <RouteWithLoader exact path={Routes.Signin.path} component={Signin} />
     <RouteWithLoader exact path={Routes.Signup.path} component={Signup} />
     <RouteWithLoader exact path={Routes.ForgotPassword.path} component={ForgotPassword} />
@@ -162,6 +167,11 @@ export default () => (
     <RouteWithSidebar exact path={Routes.JobTitleNew.path} component={JobTitleNew} />
     <RouteWithSidebar exact path={Routes.JobTitleDetail.path} component={JobTitleDetail} />
     <RouteWithSidebar exact path={Routes.JobTitleEdit.path} component={JobTitleEdit} />
+
+    <RouteWithSidebar exact path={Routes.Company.path} component={() => <Company title="Company Management" showSearch={true} showSettings={true} />} />
+    <RouteWithSidebar exact path={Routes.CompanyNew.path} component={CompanyNew} />
+    <RouteWithSidebar exact path={Routes.CompanyDetail.path} component={CompanyDetail} />
+    <RouteWithSidebar exact path={Routes.CompanyEdit.path} component={CompanyEdit} />
 
     {/* Company Management Routes */}
     <RouteWithSidebar exact path={Routes.JobPosition.path} component={() => <JobPosition title="Job Position Management" showSearch={true} showSettings={true} />} />
