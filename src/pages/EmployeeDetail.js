@@ -171,6 +171,26 @@ export default () => {
               <h5 className="mb-4">Employment Information</h5>
               <Row>
                 <Col md={6} className="mb-3">
+                  <h6>Department</h6>
+                  <p>{employee.department?.name || 'N/A'}</p>
+                </Col>
+                <Col md={6} className="mb-3">
+                  <h6>Job Position</h6>
+                  <p>{employee.jobPosition?.name || 'N/A'}</p>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={6} className="mb-3">
+                  <h6>Job Title</h6>
+                  <p>{employee.jobTitle?.name || 'N/A'}</p>
+                </Col>
+                <Col md={6} className="mb-3">
+                  <h6>Company</h6>
+                  <p>{employee.company?.name || 'N/A'}</p>
+                </Col>
+              </Row>
+              <Row>
+                <Col md={6} className="mb-3">
                   <h6>Join Date</h6>
                   <p>{formatDate(employee.dateJoin)}</p>
                 </Col>

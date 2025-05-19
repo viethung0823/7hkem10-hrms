@@ -34,7 +34,11 @@ export default () => {
     idAddress: '',
     passport: '',
     socialInsuranceCode: '',
-    taxCode: ''
+    taxCode: '',
+    company: '',
+    department: '',
+    jobPosition: '',
+    jobTitle: ''
   });
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
@@ -45,6 +49,10 @@ export default () => {
     districtWards: [],
     locations: []
   });
+  const [companies, setCompanies] = useState([]);
+  const [departments, setDepartments] = useState([]);
+  const [jobPositions, setJobPositions] = useState([]);
+  const [jobTitles, setJobTitles] = useState([]);
 
   useEffect(() => {
     // Load location data from localStorage
@@ -52,6 +60,8 @@ export default () => {
     const districts = JSON.parse(localStorage.getItem('districts') || '[]');
     const districtWards = JSON.parse(localStorage.getItem('districtWards') || '[]');
     const locations = JSON.parse(localStorage.getItem('locations') || '[]');
+    const companies = JSON.parse(localStorage.getItem('companies') || '[]');
+    const departments = JSON.parse(localStorage.getItem('departments') || '[]');
 
     setLocationData({
       provinces,
@@ -59,6 +69,26 @@ export default () => {
       districtWards,
       locations
     });
+
+    setCompanies(companies);
+    setDepartments(departments);
+
+    // Fetch job positions, job titles
+    const fetchData = async () => {
+      try {
+        const [positionsData, titlesData] = await Promise.all([
+          apiService.getJobPositions(),
+          apiService.getJobTitles()
+        ]);
+        setJobPositions(positionsData);
+        setJobTitles(titlesData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setError('Failed to load data');
+      }
+    };
+
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -201,6 +231,83 @@ export default () => {
             </Row>
 
             <h5 className="mb-4 mt-4">Employment Information</h5>
+            <Row>
+              <Col md={6} className="mb-3">
+                <Form.Group>
+                  <Form.Label>Company</Form.Label>
+                  <Form.Select
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                  >
+                    <option value="">Select Company</option>
+                    {companies.map(company => (
+                      <option key={company.id} value={company.id}>
+                        {company.name}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col md={6} className="mb-3">
+                <Form.Group>
+                  <Form.Label>Department</Form.Label>
+                  <Form.Select
+                    name="department"
+                    value={formData.department}
+                    onChange={handleChange}
+                  >
+                    <option value="">Select Department</option>
+                    {departments
+                      .filter(dept => !formData.company || parseInt(dept.company) === parseInt(formData.company))
+                      .map(dept => (
+                        <option key={dept.id} value={dept.id}>
+                          {dept.name}
+                        </option>
+                      ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col md={6} className="mb-3">
+                <Form.Group>
+                  <Form.Label>Job Position</Form.Label>
+                  <Form.Select
+                    name="jobPosition"
+                    value={formData.jobPosition}
+                    onChange={handleChange}
+                  >
+                    <option value="">Select Job Position</option>
+                    {jobPositions
+                      .map(job => (
+                        <option key={job.id} value={job.id}>
+                          {job.name}
+                        </option>
+                      ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+              <Col md={6} className="mb-3">
+                <Form.Group>
+                  <Form.Label>Job Title</Form.Label>
+                  <Form.Select
+                    name="jobTitle"
+                    value={formData.jobTitle}
+                    onChange={handleChange}
+                  >
+                    <option value="">Select Job Title</option>
+                    {jobTitles.map(title => (
+                      <option key={title.id} value={title.id}>
+                        {title.name}
+                      </option>
+                    ))}
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+            </Row>
+
             <Row>
               <Col md={6} className="mb-3">
                 <Form.Group>

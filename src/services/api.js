@@ -341,7 +341,24 @@ export const apiService = {
   },
 
   async getEmployee(id) {
-    return apiCall(`/api/hrEmployees/${id}`, getHeaders());
+    const employee = await apiCall(`/api/hrEmployees/${id}`, getHeaders());
+
+    // Fetch related data if IDs exist
+    if (employee) {
+      const [department, jobPosition, jobTitle] = await Promise.all([
+        employee.department ? apiService.getDepartment(employee.department) : null,
+        employee.jobPosition ? apiService.getJobPosition(employee.jobPosition) : null,
+        employee.jobTitle ? apiService.getJobTitle(employee.jobTitle) : null
+      ]);
+
+      return {
+        ...employee,
+        department,
+        jobPosition,
+        jobTitle
+      };
+    }
+    return employee;
   },
 
   async createEmployee(data) {
