@@ -10,11 +10,9 @@ export default () => {
   const [formData, setFormData] = useState({
     id: 9007199254740991,
     name: '',
-    code: '',
     email: '',
     workPhone: '',
     gender: 'MALE',
-    dateJoin: '',
     dateLeft: '',
     country: '',
     idNumber: '',
@@ -173,7 +171,7 @@ export default () => {
                 <Row>
                   <Col md={6} className="mb-3">
                     <Form.Group>
-                      <Form.Label>Name</Form.Label>
+                      <Form.Label>Name <span className="text-danger">*</span></Form.Label>
                       <Form.Control
                         required
                         type="text"
@@ -207,8 +205,9 @@ export default () => {
                 <Row>
                   <Col md={6} className="mb-3">
                     <Form.Group>
-                      <Form.Label>Email</Form.Label>
+                      <Form.Label>Email <span className="text-danger">*</span></Form.Label>
                       <Form.Control
+                        required
                         type="email"
                         name="email"
                         value={formData.email}
@@ -219,8 +218,9 @@ export default () => {
                   </Col>
                   <Col md={6} className="mb-3">
                     <Form.Group>
-                      <Form.Label>Phone</Form.Label>
+                      <Form.Label>Phone <span className="text-danger">*</span></Form.Label>
                       <Form.Control
+                        required
                         type="text"
                         name="workPhone"
                         value={formData.workPhone}
@@ -234,19 +234,6 @@ export default () => {
                 <Row>
                   <Col md={6} className="mb-3">
                     <Form.Group>
-                      <Form.Label>Code</Form.Label>
-                      <Form.Control
-                        required
-                        type="text"
-                        name="code"
-                        value={formData.code}
-                        onChange={handleChange}
-                        placeholder="Enter employee code"
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col md={6} className="mb-3">
-                    <Form.Group>
                       <Form.Label>Gender</Form.Label>
                       <Form.Select
                         name="gender"
@@ -258,13 +245,11 @@ export default () => {
                       </Form.Select>
                     </Form.Group>
                   </Col>
-                </Row>
-
-                <Row>
                   <Col md={6} className="mb-3">
                     <Form.Group>
-                      <Form.Label>Birthday</Form.Label>
+                      <Form.Label>Birthday <span className="text-danger">*</span></Form.Label>
                       <Form.Control
+                        required
                         type="date"
                         name="birthday"
                         value={formData.birthday}
@@ -272,6 +257,9 @@ export default () => {
                       />
                     </Form.Group>
                   </Col>
+                </Row>
+
+                <Row>
                   <Col md={6} className="mb-3">
                     <Form.Group>
                       <Form.Label>Religion</Form.Label>
@@ -290,7 +278,7 @@ export default () => {
                 <Row>
                   <Col md={6} className="mb-3">
                     <Form.Group>
-                      <Form.Label>Company</Form.Label>
+                      <Form.Label>Company <span className="text-danger">*</span></Form.Label>
                       <Form.Select
                         name="company"
                         value={formData.company}
@@ -308,7 +296,7 @@ export default () => {
                   </Col>
                   <Col md={6} className="mb-3">
                     <Form.Group>
-                      <Form.Label>Department</Form.Label>
+                      <Form.Label>Department <span className="text-danger">*</span></Form.Label>
                       <Form.Select
                         name="department"
                         value={formData.department}
@@ -331,7 +319,7 @@ export default () => {
                 <Row>
                   <Col md={6} className="mb-3">
                     <Form.Group>
-                      <Form.Label>Job Position</Form.Label>
+                      <Form.Label>Job Position <span className="text-danger">*</span></Form.Label>
                       <Form.Select
                         name="jobPosition"
                         value={formData.jobPosition}
@@ -372,17 +360,6 @@ export default () => {
                 <Row>
                   <Col md={6} className="mb-3">
                     <Form.Group>
-                      <Form.Label>Join Date</Form.Label>
-                      <Form.Control
-                        type="date"
-                        name="dateJoin"
-                        value={formData.dateJoin}
-                        onChange={handleChange}
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col md={6} className="mb-3">
-                    <Form.Group>
                       <Form.Label>Left Date</Form.Label>
                       <Form.Control
                         type="date"
@@ -392,9 +369,6 @@ export default () => {
                       />
                     </Form.Group>
                   </Col>
-                </Row>
-
-                <Row>
                   <Col md={6} className="mb-3">
                     <Form.Group className="d-flex align-items-center">
                       <Form.Check
