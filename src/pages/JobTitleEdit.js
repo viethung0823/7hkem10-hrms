@@ -11,17 +11,11 @@ export default () => {
   const [formData, setFormData] = useState({
     name: '',
     code: '',
-    description: '',
-    company: '',
-    department: '',
-    location: ''
+    description: ''
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
-  const [companies, setCompanies] = useState([]);
-  const [departments, setDepartments] = useState([]);
-  const [locations, setLocations] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
@@ -31,25 +25,13 @@ export default () => {
         setFormData({
           name: data.name,
           code: data.code,
-          description: data.description,
-          company: data.company,
-          department: data.department,
-          location: data.location
+          description: data.description
         });
       } catch (error) {
         setError('Failed to fetch job title data');
         console.error('Error fetching job title:', error);
       }
     };
-
-    // Load data from localStorage
-    const storedCompanies = localStorage.getItem('companies');
-    const storedDepartments = localStorage.getItem('departments');
-    const storedLocations = localStorage.getItem('locations');
-
-    if (storedCompanies) setCompanies(JSON.parse(storedCompanies));
-    if (storedDepartments) setDepartments(JSON.parse(storedDepartments));
-    if (storedLocations) setLocations(JSON.parse(storedLocations));
 
     fetchJobTitle();
   }, [id]);
@@ -61,13 +43,7 @@ export default () => {
     setLoading(true);
 
     try {
-      const requestData = {
-        ...formData,
-        company: parseInt(formData.company),
-        department: parseInt(formData.department),
-        location: parseInt(formData.location)
-      };
-      await apiService.updateJobTitle(id, requestData);
+      await apiService.updateJobTitle(id, formData);
       setSuccess('Job title updated successfully!');
       // Redirect to job title list after 2 seconds
       setTimeout(() => {
@@ -151,66 +127,6 @@ export default () => {
                         onChange={handleChange}
                         placeholder="Enter job title description"
                       />
-                    </Form.Group>
-                  </Col>
-                </Row>
-
-                <Row>
-                  <Col md={4} className="mb-3">
-                    <Form.Group id="company">
-                      <Form.Label>Company</Form.Label>
-                      <Form.Control
-                        as="select"
-                        required
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select Company</option>
-                        {companies.map(company => (
-                          <option key={company.id} value={company.id}>
-                            {company.name}
-                          </option>
-                        ))}
-                      </Form.Control>
-                    </Form.Group>
-                  </Col>
-                  <Col md={4} className="mb-3">
-                    <Form.Group id="department">
-                      <Form.Label>Department</Form.Label>
-                      <Form.Control
-                        as="select"
-                        required
-                        name="department"
-                        value={formData.department}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select Department</option>
-                        {departments.map(department => (
-                          <option key={department.id} value={department.id}>
-                            {department.name}
-                          </option>
-                        ))}
-                      </Form.Control>
-                    </Form.Group>
-                  </Col>
-                  <Col md={4} className="mb-3">
-                    <Form.Group id="location">
-                      <Form.Label>Location</Form.Label>
-                      <Form.Control
-                        as="select"
-                        required
-                        name="location"
-                        value={formData.location}
-                        onChange={handleChange}
-                      >
-                        <option value="">Select Location</option>
-                        {locations.map(location => (
-                          <option key={location.id} value={location.id}>
-                            {location.name}
-                          </option>
-                        ))}
-                      </Form.Control>
                     </Form.Group>
                   </Col>
                 </Row>

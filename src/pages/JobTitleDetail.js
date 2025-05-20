@@ -13,9 +13,6 @@ export default () => {
   const [error, setError] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
-  const [companies, setCompanies] = useState([]);
-  const [departments, setDepartments] = useState([]);
-  const [locations, setLocations] = useState([]);
 
   useEffect(() => {
     const fetchJobTitle = async () => {
@@ -28,15 +25,6 @@ export default () => {
         setError(error.message || 'Failed to fetch job title details');
       }
     };
-
-    // Load data from localStorage
-    const storedCompanies = localStorage.getItem('companies');
-    const storedDepartments = localStorage.getItem('departments');
-    const storedLocations = localStorage.getItem('locations');
-
-    if (storedCompanies) setCompanies(JSON.parse(storedCompanies));
-    if (storedDepartments) setDepartments(JSON.parse(storedDepartments));
-    if (storedLocations) setLocations(JSON.parse(storedLocations));
 
     fetchJobTitle();
   }, [id]);
@@ -52,21 +40,6 @@ export default () => {
     } finally {
       setDeleteLoading(false);
     }
-  };
-
-  const getCompanyName = (companyId) => {
-    const company = companies.find(comp => comp.id === companyId);
-    return company ? company.name : 'Unknown';
-  };
-
-  const getDepartmentName = (departmentId) => {
-    const department = departments.find(dept => dept.id === departmentId);
-    return department ? department.name : 'Unknown';
-  };
-
-  const getLocationName = (locationId) => {
-    const location = locations.find(loc => loc.id === locationId);
-    return location ? location.name : 'Unknown';
   };
 
   if (error) {
@@ -132,21 +105,6 @@ export default () => {
                 <Col md={12} className="mb-3">
                   <h6>Description</h6>
                   <p>{jobTitle.description}</p>
-                </Col>
-              </Row>
-
-              <Row>
-                <Col md={4} className="mb-3">
-                  <h6>Company</h6>
-                  <p>{getCompanyName(jobTitle.company)}</p>
-                </Col>
-                <Col md={4} className="mb-3">
-                  <h6>Department</h6>
-                  <p>{getDepartmentName(jobTitle.department)}</p>
-                </Col>
-                <Col md={4} className="mb-3">
-                  <h6>Location</h6>
-                  <p>{getLocationName(jobTitle.location)}</p>
                 </Col>
               </Row>
             </Card.Body>
