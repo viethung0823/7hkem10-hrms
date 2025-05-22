@@ -150,7 +150,7 @@ export default (props) => {
               <td>{formatDate(contract.dateFrom)}</td>
               <td>{formatDate(contract.dateTo)}</td>
               <td>{formatSalary(contract.salary)}</td>
-              <td>{contract.status || 'N/A'}</td>
+              <td>{contract.status?.value || 'N/A'}</td>
               <td>
                 <Button
                   variant="primary"

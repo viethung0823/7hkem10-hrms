@@ -13,6 +13,14 @@ export default () => {
   const [error, setError] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
+  const [relatedData, setRelatedData] = useState({
+    employee: null,
+    contractType: null,
+    jobPosition: null,
+    jobTitle: null,
+    department: null,
+    company: null
+  });
 
   useEffect(() => {
     const fetchContract = async () => {
@@ -20,6 +28,25 @@ export default () => {
         const data = await apiService.getContract(id);
         setContract(data);
         setError(null);
+
+        // Fetch related data
+        const [employee, contractType, jobPosition, jobTitle, department, company] = await Promise.all([
+          apiService.getEmployee(data.employee),
+          apiService.getContractType(data.contractType),
+          apiService.getJobPosition(data.jobPosition),
+          apiService.getJobTitle(data.jobTitle),
+          apiService.getDepartment(data.department),
+          apiService.getCompany(data.company)
+        ]);
+
+        setRelatedData({
+          employee,
+          contractType,
+          jobPosition,
+          jobTitle,
+          department,
+          company
+        });
       } catch (error) {
         console.error('Error fetching contract:', error);
         setError(error.message || 'Failed to fetch contract details');
@@ -132,14 +159,45 @@ export default () => {
                 </Col>
                 <Col md={6} className="mb-3">
                   <h6>Status</h6>
-                  <p>{contract.status}</p>
+                  <p>{contract.status?.value || 'N/A'}</p>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Card>
+
+          <Card border="light" className="bg-white shadow-sm mb-4">
+            <Card.Body>
+              <h5 className="mb-4">Related Information</h5>
+              <Row>
+                <Col md={6} className="mb-3">
+                  <h6>Employee</h6>
+                  <p>{relatedData.employee?.name || 'N/A'}</p>
+                </Col>
+                <Col md={6} className="mb-3">
+                  <h6>Contract Type</h6>
+                  <p>{relatedData.contractType?.name || 'N/A'}</p>
                 </Col>
               </Row>
 
               <Row>
                 <Col md={6} className="mb-3">
-                  <h6>Contract Type</h6>
-                  <p>{contract.contractType?.name || 'N/A'}</p>
+                  <h6>Job Position</h6>
+                  <p>{relatedData.jobPosition?.name || 'N/A'}</p>
+                </Col>
+                <Col md={6} className="mb-3">
+                  <h6>Job Title</h6>
+                  <p>{relatedData.jobTitle?.name || 'N/A'}</p>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col md={6} className="mb-3">
+                  <h6>Department</h6>
+                  <p>{relatedData.department?.name || 'N/A'}</p>
+                </Col>
+                <Col md={6} className="mb-3">
+                  <h6>Company</h6>
+                  <p>{relatedData.company?.name || 'N/A'}</p>
                 </Col>
               </Row>
             </Card.Body>
